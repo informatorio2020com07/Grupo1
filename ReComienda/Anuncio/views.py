@@ -73,8 +73,8 @@ def anuncio_nuevo(request):
 
 @login_required
 def comentar(request,id):
-    anuncio = Comentario.objects.get(pk=id)
-    if post.permitir_comentarios:
+    anuncio = Anuncio_Trans.objects.get(pk=id)
+    if anuncio.permitir_comentarios:
         if request.method == "POST":
             form = ComentarioForm(request.POST)
             if form.is_valid():
