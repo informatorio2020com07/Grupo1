@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>
+  {% block titulonavegador %}
+      ReComienda  
+  {% endblock %}
+  </title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+ </head>
+
+<body>
+  <header>
+      <div>
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="{% url 'anuncio_nuevo' %}">Contratista</a></li>
+          <li><a href="{% url 'nuevo_anuncio' %}">Transportista</a></li>
+        </ul>
+      <nav class="white" role="navigation" >
+      <div class="nav-wrapper" style="color: rgba(255, 0, 0, 0.445);background-color:#26A69A;">
+        <a href="{% url 'index' %}" class="brand-logo" style="margin: 0;"> <img style="width: 80px; height: 80px; vertical-align: middle;" src="{% static 'img/rt.png' %}" alt="logo Recomienda">ReComienda</a>
+        <ul class="right hide-on-med-and-down">
+          {% if request.user.is_authenticated %}
+          {% if request.user.foto %}
+          <a href="{% url 'ver_perfil' request.user.id %}" class="brand-logo right"><img class="circle foto-perfil-esquina" src="{{ request.user.foto.url }}" style=" height: 40px; width: 40px"></a>
+          {% else %}
+          <a href="{% url 'ver_perfil' request.user.id %}" class="brand-logo right"><img class="circle foto-perfil-esquina" src="{% static 'img/pordefecto.jpg' %}" style=" height: 40px; width: 40px"></a>
+          {% endif%} 
+
+          <li><a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a></li>
+          <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Crar Anuncio<i class="material-icons right">arrow_drop_down</i></a></li>
+          
+          {% else %}
+          <li><a href="{% url 'iniciar_sesion' %}">Iniciar Sesion</a></li>
+          <li><a href="{% url 'nuevo_usuario' %}">Registrarse</a></li>        
+          
+          {% endif %}      
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="container">
+
+  <main>
+
+    {% block contenido %}
+    {% endblock %}
+
+  </div>
+
+  </main>
+
+  <strong>
+      <div class="container">
+        <div class="section">
+
+          <div class="row">
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">local_taxi</i></h2>
+                <h5 class="center">Ecomiendas/Paquetes</h5>
+              </div>
+            </div>
+
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">local_shipping</i></h2>
+                <h5 class="center">Fletes/Mudanzas</h5>
+              </div>
+            </div>
+
+            <div class="col s12 m4">
+              <div class="icon-block">
+                <h2 class="center brown-text"><i class="material-icons">airport_shuttle</i></h2>
+                <h5 class="center">Viajes</h5>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+  </strong>
+
+</body>
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+  <script src="{% static 'js/materialize.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+  <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+          M.AutoInit();
+        });
+  </script>
+
+  
+</html>

@@ -1,0 +1,33 @@
+{% load static %}
+{% for anuncio in lista_anuncio %}
+      <div class="row">
+        <div class="col s12 m6 l4">
+         <div class="card">
+          <div class="col s12">
+           <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{% static 'img/rt.png' %}">
+            </div>
+           <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">{{ anuncio.titulo}}<i class="material-icons right">more_vert</i></span>
+                <p>{{anuncio.tel}}</p>
+                <p><a href="#"><p>{{anuncio.Email}}</p></a></p>
+              </div>
+                <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{anuncio.titulo}}<i class="material-icons right">close</i>
+          <p>{{anuncio.descripcion}}</p><br>
+          <p>Tel: {{anuncio.tel}}</p><br>
+          <hr>
+          <p>Tipo de Servicio: {{anuncio.tipo_servicio}}</p>
+          <p>Fecha de Viaje: {{anuncio.fecha_viaje}}</p>
+          <p>Fecha de Lapso: {{anuncio.fecha_lapso}}</p>
+          <p>Localidad Origen: {{anuncio.localidad_origen}}</p>
+          <p>Localidad Destino: {{anuncio.localidad_destino}}</p>
+          <p style="text-align: right">{{anuncio.fecha_publicacion}}</p>
+          <a href="{% url 'ver_contratista' anuncio.id %}" title="vinculo a contacto" style="text-align: right"><p style="text-align: right">VER ANUNCIO</p></a>
+          </div>
+          </div>
+        </div>    
+  </div></div> 
+{% endfor %}
+

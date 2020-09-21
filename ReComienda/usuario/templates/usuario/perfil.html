@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titlehead %}
+    Perfil: {{ perfil.username }}
+{% endblock %}
+
+{% block contenido %}
+    Perfil: {{ perfil.username }}
+    {% if perfil.foto %}
+    <img src="{{ perfil.foto.url }}" alt="imagen de perfil">
+    {% else %}
+       <img src="{% static 'img/pordefecto.jpg' %}" alt="archivo por defecto">
+    {% endif %}  
+
+    {% if request.user == perfil%}
+        <button>Editar</button>
+    {% else %}
+        <button>otra cosa</button>
+    {% endif %}
+        <div class="row">
+            <div class="divider"></div>
+        </div>
+        <div class="row">
+            <h1>Referencias</h1>
+                  </div>
+{% endblock %}
