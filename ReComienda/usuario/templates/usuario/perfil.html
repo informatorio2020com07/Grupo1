@@ -13,7 +13,8 @@
     {% endif %}  
 
     {% if request.user == perfil%}
-        <button>Editar</button>
+        
+        <a href="{% url 'editar_perfil' %}">Editar</a> <!--<button>Editar</button> -->
     {% else %}
         <button>otra cosa</button>
     {% endif %}

@@ -17,7 +17,7 @@ class Transporte(models.Model):
 
 class Anuncio_Trans(models.Model):
 	nombre = models.CharField(max_length=30)
-	Email = models.EmailField(null=False)
+	E_mail = models.EmailField(null=True)
 	localidad_origen = models.ForeignKey(Localidad, on_delete = models.CASCADE, related_name = 'localidad_origen_trans')
 	localidad_destino = models.ForeignKey(Localidad, on_delete = models.CASCADE, related_name = 'localidad_destino_trans')
 	recorrido = models.TextField()	
@@ -27,7 +27,7 @@ class Anuncio_Trans(models.Model):
 	usuario = models.ForeignKey(Perfil, on_delete=models.CASCADE, null=True)
 	fecha_publicacion = models.DateTimeField(auto_now_add = True)
 	fecha_caducidad = models.DateTimeField()
-	tel = models.IntegerField(null=False)
+	telefono = models.CharField(null=True, max_length=20)
 	permitir_comentarios = models.BooleanField(default = True)
 	
 	
@@ -61,7 +61,9 @@ class Contratista(models.Model):
 	localidad_destino = models.ForeignKey(Localidad, on_delete = models.CASCADE, related_name = 'localidad_destino')
 	descripcion = models.TextField()
 	usuario = models.ForeignKey(Perfil, on_delete=models.CASCADE, null=True)
-	permitir_comentarios = models.BooleanField(default = True)
+	permitir_comentarios = models.BooleanField(default = True)	
+	E_mail = models.EmailField(null=True)
+	telefono = models.CharField(max_length=20, null=True, verbose_name="Nro Telefono")
 	"""tipo_servicio = models.ForeignKey(Servicios, on_delete = models.CASCADE, null=True)"""
 
 """class Servicios(models.Model):

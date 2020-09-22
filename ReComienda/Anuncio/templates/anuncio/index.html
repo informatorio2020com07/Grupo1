@@ -1,11 +1,68 @@
 {% extends 'base.html' %}
 
-{% block titulonavegador %}
-Ultimos Anuncios
-{% endblock %}
-
 {% block contenido %}
-{% include 'anuncio/anuncio_cuadricula.html' with lista_anuncio=lista_anuncio %}
 
-{% include 'anuncio/cuadricula_contratista.html' with lista_anuncio=lista_anuncio %}
+{% load static %}
+
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center teal-text text-lighten-2">publicidad $.$</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">link de la pag oficial de la publicidad</h5>
+      </div>
+
+      <br><br>
+
+    </div>
+  </div>
+  <div class="parallax"><img src="{% static 'img/rta.jpg' %}" alt="Unsplashed background img 1"></div>
+</div>
+
+
+<div class="container">
+  <div class="section">
+
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="material-icons">local_taxi</i></h2>
+          <h5 class="center">Ecomiendas/Paquetes</h5>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="material-icons">local_shipping</i></h2>
+          <h5 class="center">Fletes/Mudanzas</h5>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="material-icons">airport_shuttle</i></h2>
+          <h5 class="center">Viajes</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="parallax-container valign-wrapper">
+
+    <div class="container">
+      <div class="row center">
+        <h5 class="header col s12 light">DESCRIPCION introductoria de la web...</h5>
+      </div>
+      <div class="row center">
+        <p><input placeholder="Buscar Servicios..."></input></p>
+        <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">search</i></a></a>
+      </div>
+    </div>
+  <div class="parallax"><img src="img/ruta.jpg" alt="Unsplashed background img 3"></div>
+</div>
+
 {% endblock %}

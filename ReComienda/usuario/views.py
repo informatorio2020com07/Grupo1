@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm 
-from .forms import NuevoUsuarioForm
+from .forms import NuevoUsuarioForm, EditarPerfilForm
+from django.contrib.auth.decorators import login_required
 from .models import Perfil
 # Create your views here.
 def bienvenido(request):
@@ -32,6 +33,20 @@ def iniciar_sesion(request):
 				login(request,user)
 				return redirect("index")
 	return render(request, "usuario/iniciar_sesion.html", {"form":form})
+
+
+@login_required
+def editar_perfil(request):
+    perfil = request.user
+    form = EditarPerfilForm(instance = perfil)
+    if request.method == "POST":
+        form = EditarPerfilForm(request.POST, request.FILES, instance=perfil)
+        if form.is_valid():
+            perfil = form.save()
+            return redirect("ver_perfil", perfil.id)
+    return render(request, "usuario/editar_perfil.html",{"form":form})
+
+
 
 
 
