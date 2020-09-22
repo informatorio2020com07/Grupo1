@@ -5,6 +5,7 @@ Anuncio : {{anuncio.titulo}}
 {% endblock %}
 
 {% block contenido %}
+ <div class="container">
 <div class="container">
       <div class="row">
         <div class="col s12">
@@ -26,11 +27,11 @@ Anuncio : {{anuncio.titulo}}
           <p>Localidad Origen: {{anuncio.localidad_origen}}</p>
           <p>Localidad Destino: {{anuncio.localidad_destino}}</p>
           <p style="text-align: right">{{anuncio.fecha_publicacion}}</p>
-          <a href="{% url 'ver_anuncio' anuncio.id %}" title="vinculo a contacto" style="text-align: right"><p style="text-align: right">VER ANUNCIO</p></a>
+          <a href="{% url 'ver_contratista' anuncio.id %}" title="vinculo a contacto" style="text-align: right"><p style="text-align: right">VER ANUNCIO</p></a>
           </div>
           </div>
         </div>    
-  </div>
+  </div></div>
 <hr>
 <hr>
   <h5>OTROS ANUNCIOS</h5>

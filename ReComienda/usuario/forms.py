@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Perfil
 
@@ -17,8 +17,3 @@ class NuevoUsuarioForm(UserCreationForm):
             if x==len(lista)-1:
                 break
         self.fields["foto"].widget.attrs.update({'class' : 'texto-rojo','placeholder' : '', 'name':'foto' , 'accept':'image/*'})
-
-class EditarPerfilForm(UserChangeForm):
-    class Meta:
-        model = Perfil
-        fields = ("first_name","last_name","username", "email", "password", "foto")

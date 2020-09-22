@@ -11,48 +11,34 @@
       <h1 class="header center teal-text text-lighten-2">publicidad $.$</h1>
       <div class="row center">
         <h5 class="header col s12 light">link de la pag oficial de la publicidad</h5>
-      </div>
-
-      <br><br>
-
     </div>
+      <br><br>
   </div>
-  <div class="parallax"><img src="{% static 'img/rta.jpg' %}" alt="Unsplashed background img 1"></div>
-</div>
-
+      <div class="parallax"><img src="{% static 'img/rta.jpg' %}" alt="Unsplashed background img 1"></div>
+</div></div>
 
 <div class="container">
-  <div class="section">
-
-    <div class="row">
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">local_taxi</i></h2>
-          <h5 class="center">Ecomiendas/Paquetes</h5>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">local_shipping</i></h2>
-          <h5 class="center">Fletes/Mudanzas</h5>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="icon-block">
-          <h2 class="center brown-text"><i class="material-icons">airport_shuttle</i></h2>
-          <h5 class="center">Viajes</h5>
-        </div>
-      </div>
+     <div class="row">
+      <hr>
+  <h5>ANUNCIOS CONTRATISTAS</h5>
+  {% include 'anuncio/cuadricula_contratista.html' with lista_anuncio=lista_anuncio %}
     </div>
-
   </div>
-</div>
+</div></div>
+<div>
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <hr>
+  <h5>ANUNCIOS TRANSORTISTAS</h5>
+  
+  {% include 'anuncio/anuncio_cuadricula.html' with lista_anuncio=lista_anuncio %}
+    </div>
+  </div>
+</div></div></div>
 
 
 <div class="parallax-container valign-wrapper">
-
     <div class="container">
       <div class="row center">
         <h5 class="header col s12 light">DESCRIPCION introductoria de la web...</h5>
@@ -62,7 +48,8 @@
         <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">search</i></a></a>
       </div>
     </div>
-  <div class="parallax"><img src="img/ruta.jpg" alt="Unsplashed background img 3"></div>
+  <div class="parallax"><img src="{% static 'img/ruta.jpg' %}" alt="Unsplashed background img 3"></div>
 </div>
-
+</div>
 {% endblock %}
+
