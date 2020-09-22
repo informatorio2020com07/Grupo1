@@ -7,11 +7,11 @@ from csv import DictReader
 class Command(BaseCommand):
 
     def __cargar_bd(self):
-        for fila in DictReader(open("static/csv/localidades.csv")):
+        for fila in DictReader(open("static/csv/localidades.csv", encoding="utf8")):
             locali = Localidad()
             locali.localidad = fila["Nombre"]
             locali.save()
-        for fila in DictReader(open("static/csv/transporte.csv")):
+        for fila in DictReader(open("static/csv/transporte.csv", encoding="utf8")):
             transp = Transporte()
             transp.transporte = fila["Tipo"]
             transp.save()
