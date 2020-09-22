@@ -31,8 +31,9 @@
   <form method="POST" enctype="multipart/form-data" >
     {% csrf_token %}
     
-    {{ form.as_p }}
-    <!-- 
+    <!--{{ form.as_p }}-->  
+    
+
     <div class="name">
       <label for="name"></label>
       {{ form.nombre }}
@@ -40,7 +41,7 @@
 
     <div class="email">
       <label for="email"></label>
-      {{ form.Email }}
+      {{ form.E_mail }}
     </div> <br/>
   
     <div class="subject" style="color: #26A69A">
@@ -52,9 +53,15 @@
      LOCALIDAD DESTINO
       {{ form.localidad_destino }}
     </div>
-    
+    RECORRIDO
     {{ form.recorrido }}
+    TITULO
     {{ form.titulo }}
+
+    <div>
+      
+
+    </div>
 
     <div class="message">
       <label for="message"></label>
@@ -70,9 +77,18 @@
     {{ form.fecha_caducidad }}
     </div>
      <div class="telephone" style="color: #26A69A">
-        {{form.tel}}
-    
-    </div>-->
+        TELEFONO
+      {{form.telefono}}
+  
+  
+    </div>
+<div>
+    <label>
+      {{ form.permitir_comentarios }}
+      <span>Permitir Comentarios</span>
+      </label> 
+    </div>
+
     {{ form.errors }}
     <div class="submit">
       <button type="submit" value="Crear Anuncio" id="form_button" >
