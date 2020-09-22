@@ -38,6 +38,7 @@ class ContratistaForm(forms.ModelForm):
     class Meta:
         model = Contratista
         fields = "__all__"
+        exclude = ('usuario',)
 
     """def __init__(self, *args, **kwargs):
         super(ContratistaForm, self).__init__(*args, **kwargs)
