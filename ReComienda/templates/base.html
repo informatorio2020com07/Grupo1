@@ -31,6 +31,7 @@
           <a href="{% url 'ver_perfil' request.user.id %}" class="brand-logo right"><img class="circle foto-perfil-esquina" src="{% static 'img/pordefecto.jpg' %}" style=" height: 40px; width: 40px"></a>
           {% endif%} 
 
+           
           <li><a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a></li>
           <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Crear Anuncio<i class="material-icons right">arrow_drop_down</i></a></li>
           
@@ -42,6 +43,7 @@
         </ul>
       </div>
     </nav>
+  {% include "anuncio/search_form.html"%}
   </header>
 
   <main>
