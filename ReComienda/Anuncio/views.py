@@ -120,3 +120,17 @@ def borrar_anuncioT(request,id):
 def search(request):
     return HttpResponse("hola")
     anuncio = Anuncio_Trans.objects.get(pk=id)
+
+"""def search(request): 
+    # parametros
+    param_titulo = request.GET.get('titulo','')
+    #param_payment = request.GET.get('param_payment','')
+    #param_delivery = request.GET.get('param_delivery','')
+    #param_orden =request.GET.get('param_orden','')
+
+    # filtrar titulo
+    publicaciones = Anuncio_Trans.objects.filter(titulo__contains=param_titulo)
+    form = SearchForm()
+    contexto = {"form":form, "publicaciones":publicaciones}
+
+    return render(request, "anuncio/search.html", contexto)"""
