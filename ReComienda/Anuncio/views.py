@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .models import Anuncio_Trans, Contratista,Localidad,Transporte, Comentario
 from .forms import AnuncioForm, ContratistaForm, ComentarioForm, LocalidadForm, TransporteForm,SearchForm
 from django.contrib.auth.decorators import login_required
@@ -116,3 +116,6 @@ def borrar_anuncioT(request,id):
         if anuncio.usuario == request.user:
             anuncio.delete()
             return redirect("ver_perfil", request.user.id)
+
+def search(request):
+    return HttpResponse("hola")

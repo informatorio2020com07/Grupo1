@@ -10,7 +10,7 @@ urlpatterns = [
 	path("contratista/<int:id>", views.ver_contratista, name="ver_contratista"),
 	path("anuncio/<int:id>/comentar", views.comentar, name="comentar"),
 	path("anuncio/<int:id>/borrar", views.borrar_anuncioT, name="borrar_anuncioT"),
-
+	path("anuncio/search", views.search, name="search")
    
 ] 
 
