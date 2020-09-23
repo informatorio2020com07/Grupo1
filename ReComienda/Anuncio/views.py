@@ -119,3 +119,4 @@ def borrar_anuncioT(request,id):
 
 def search(request):
     return HttpResponse("hola")
+    anuncio = Anuncio_Trans.objects.get(pk=id)
