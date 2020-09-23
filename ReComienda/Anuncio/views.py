@@ -1,14 +1,36 @@
 from django.shortcuts import render, redirect
 from .models import Anuncio_Trans, Contratista,Localidad,Transporte, Comentario
-from .forms import AnuncioForm, ContratistaForm, ComentarioForm, LocalidadForm, TransporteForm
+from .forms import AnuncioForm, ContratistaForm, ComentarioForm, LocalidadForm, TransporteForm,SearchForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
-    lista_anuncio = Anuncio_Trans.objects.all()[0:12]
-    lista_contrato = Contratista.objects.all()[0:12]
+    if request.GET:
+        search_form = SearchForm(request.GET)
+    else:
+        search_form = SearchForm()
+
+    filtro_titulo = request.GET.get("titulo", "")
+    orden_anuncio = request.GET.get("orden", None)
+    param_comentarios_habilitados = request.GET.get("permitir_comentarios", None)
+    param_categorias = request.GET.getlist("categoria")
+
+
+    lista_anuncio = Anuncio_Trans.objects.filter(titulo__icontains = filtro_titulo)
+    lista_contrato = Contratista.objects.filter(titulo__icontains = filtro_titulo)
+    
+    if param_comentarios_habilitados:
+        anuncios = anuncios.filter(permitir_comentarios = True)
+    
+    if orden_anuncio == "titulo":
+        anuncios= anuncios.order_by("titulo")
+    elif orden_anuncio == "antiguo":
+        anuncios= anuncios.order_by("fecha_creado")
+    elif orden_anuncio == "nuevo":
+        anuncios= anuncios.order_by("-fecha_creado")
     contexto={ 
     "lista_anuncio" : lista_anuncio,
-    "lista_contrato": lista_contrato
+    "lista_contrato": lista_contrato,
+    "search_form":search_form,
     }
     return render(request, "anuncio/index.html", contexto)
 
@@ -87,3 +109,10 @@ def comentar(request,id):
         return redirect("ver_anuncio", anuncio.id)
 
 
+@login_required
+def borrar_anuncioT(request,id):
+    anuncio = Anuncio_Trans.objects.get(pk=id)
+    if request.method == "POST":
+        if anuncio.usuario == request.user:
+            anuncio.delete()
+            return redirect("ver_perfil", request.user.id)

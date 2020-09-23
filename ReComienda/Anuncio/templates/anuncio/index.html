@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
-
-{% block contenido %}
-
 {% load static %}
+{% block contenido %}
 
 <div id="index-banner" class="parallax-container">
   <div class="section no-pad-bot">
@@ -11,30 +9,31 @@
       <h1 class="header center teal-text text-lighten-2">publicidad $.$</h1>
       <div class="row center">
         <h5 class="header col s12 light">link de la pag oficial de la publicidad</h5>
+      </div>
+        <br><br>
     </div>
-      <br><br>
-  </div>
       <div class="parallax"><img src="{% static 'img/rta.jpg' %}" alt="Unsplashed background img 1"></div>
-</div></div></div>
-
-<div class="container">
-     <div class="row">
-      <hr>
-  <h5>ANUNCIOS CONTRATISTAS</h5>
-{% include 'anuncio/cuadricula_contratista.html' with lista_anuncio=lista_anuncio %}
-    </div>
   </div>
 </div>
+</div></div>
 <div class="container">
-  <div class="section">
+  <div class="row">
+      <hr>
+    <h5>ANUNCIOS CONTRATISTAS</h5>
+      {% include 'anuncio/cuadricula_contratista.html' with lista_anuncio=lista_anuncio %}
+  </div>
+</div>
+</div>
+</div>
+
+<div class="container">
     <div class="row">
       <hr>
-  <h5>ANUNCIOS TRANSORTISTAS</h5>
-  
-{% include 'anuncio/anuncio_cuadricula.html' with lista_anuncio=lista_anuncio %}
+    <h5>ANUNCIOS TRANSORTISTAS</h5>  
+      {% include 'anuncio/anuncio_cuadricula.html' with lista_anuncio=lista_anuncio %}
     </div>
-  </div>
-</div></div></div></div>
+</div></div></div>
+
 
 
 <div class="parallax-container valign-wrapper">
@@ -42,13 +41,18 @@
       <div class="row center">
         <h5 class="header col s12 light">DESCRIPCION introductoria de la web...</h5>
       </div>
-      <div class="row center">
-        <p><input placeholder="Buscar Servicios..."></input></p>
-        <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">search</i></a></a>
-      </div>
+        <div class="row center">
+          <form method="POST" enctype="multipart/form-data" action="anuncio/search_form.html">
+    {% csrf_token %}
+  
+            {{ form.as_p }}
+    
+         <p><input placeholder="Buscar Servicios..."></input></p>
+       
+          <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">search</i></a></a>
+        </div></form>
     </div>
-  <div class="parallax"><img src="{% static 'img/ruta.jpg' %}" alt="Unsplashed background img 3"></div>
-</div>
+      <div class="parallax"><img src="{% static 'img/ruta.jpg' %}" alt="Unsplashed background img 3"></div>
 </div>
 {% endblock %}
 

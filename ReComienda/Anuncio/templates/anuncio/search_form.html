@@ -1,0 +1,41 @@
+<form method="GET" style="padding-top: 20px;">
+
+
+    <div class="row">
+        <div class="input-field col s10">
+            {{ search_form.titulo }}
+            <label for="{{ search_form.titulo.id_for_label }}">Buscar:</label>
+        </div>
+        <div class="input-field col s2 center">
+          <button class="btn waves-effect waves-light" type="submit">
+            <i class="material-icons">search</i>
+          </button>         
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="input-field col s12 m6">
+            {{ search_form.orden }}
+            <label>Orden</label>
+            
+        </div>
+
+        <div class="input-field col s12 m6">
+            {{ search_form.categoria }}
+            <label>Filtrar Categorías</label>
+            
+        </div>        
+        
+        <div class="col s12">
+            <label>
+                {{ search_form.permitir_comentarios }}
+                <span>Mostrar Solo con Comentarios Habilitados</span>
+             </label>
+        </div>
+    </div>    
+
+
+
+
+</form>
