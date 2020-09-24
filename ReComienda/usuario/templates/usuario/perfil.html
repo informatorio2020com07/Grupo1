@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block contenido %}
-    Perfil: {{ perfil.username }}
+    Perfil: {{ perfil.username }}<br>
     {% if perfil.foto %}
     <img src="{{ perfil.foto.url }}" alt="imagen de perfil">
     {% else %}

@@ -54,8 +54,10 @@ class ComentarioForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     titulo = forms.CharField(max_length=30, required = False)
+    localidad = forms.CharField(max_length=50, required = False)
     ORDER_OPCIONES = (
         ("titulo", "Titulo"),
+        ("localidad", "localidad"),
         ("Fecha",(
             ("antiguo", "Antiguo"),
             ("nuevo", "Nuevo"))
@@ -66,3 +68,4 @@ class SearchForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(SearchForm, self).__init__(*args, **kwargs)
         self.fields["titulo"].widget.attrs["placeholder"] = "Ingrese filtros titulo"
+        self.fields["localidad"].widget.attrs["placeholder"] = "Ingrese filtros localidad"

@@ -10,12 +10,15 @@ def index(request):
         search_form = SearchForm()
 
     filtro_titulo = request.GET.get("titulo", "")
+    filtro_localidad = request.GET.get("localidad", "")
     orden_anuncio = request.GET.get("orden", None)
     lista_anuncio = Anuncio_Trans.objects.filter(titulo__icontains = filtro_titulo)
     lista_contrato = Contratista.objects.filter(titulo__icontains = filtro_titulo)
     
     if orden_anuncio == "titulo":
         anuncios= anuncios.order_by("titulo")
+    if orden_anuncio == "localidad":
+        anuncios= anuncios.order_by("localidad")
     elif orden_anuncio == "antiguo":
         anuncios= anuncios.order_by("fecha_creado")
     elif orden_anuncio == "nuevo":
@@ -114,6 +117,7 @@ def borrar_anuncioT(request,id):
 def search(request): 
     # parametros
     param_titulo = request.GET.get('titulo','')
+    param_localidad = request.GET.get('localidad_destiono','')
     #param_payment = request.GET.get('param_payment','')
     #param_delivery = request.GET.get('param_delivery','')
     #param_orden =request.GET.get('param_orden','')
@@ -121,8 +125,11 @@ def search(request):
     # filtrar titulo
     publicaciones = Anuncio_Trans.objects.filter(titulo__contains=param_titulo)
     publicacionesC = Contratista.objects.filter(titulo__contains=param_titulo)
+    anuncio = Anuncio_Trans.objects.filter(titulo__contains=param_localidad)
+    anuncioC = Contratista.objects.filter(titulo__contains=param_localidad)
     form = SearchForm()
-    contexto = {"form":form, "publicaciones":publicaciones, "publicacionesC":publicacionesC}
+    contexto = {"form":form, "publicaciones":publicaciones, "publicacionesC":publicacionesC,
+    "anuncio":anuncio, "anuncioC": anuncioC,}
 
     return render(request, "anuncio/search.html", contexto)
 
