@@ -11,15 +11,8 @@ def index(request):
 
     filtro_titulo = request.GET.get("titulo", "")
     orden_anuncio = request.GET.get("orden", None)
-    param_comentarios_habilitados = request.GET.get("permitir_comentarios", None)
-    param_categorias = request.GET.getlist("categoria")
-
-
     lista_anuncio = Anuncio_Trans.objects.filter(titulo__icontains = filtro_titulo)
     lista_contrato = Contratista.objects.filter(titulo__icontains = filtro_titulo)
-    
-    if param_comentarios_habilitados:
-        anuncios = anuncios.filter(permitir_comentarios = True)
     
     if orden_anuncio == "titulo":
         anuncios= anuncios.order_by("titulo")

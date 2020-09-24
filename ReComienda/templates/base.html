@@ -11,6 +11,7 @@
   </title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+   <link href="{% static 'css/search.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
  </head>
 
 <body>
@@ -19,6 +20,10 @@
         <ul id="dropdown1" class="dropdown-content">
           <li><a href="{% url 'anuncio_nuevo' %}">Contratista</a></li>
           <li><a href="{% url 'nuevo_anuncio' %}">Transportista</a></li>
+        </ul>
+        <ul id="dropdown2" class="dropdown-content">
+          <li><a href="#">Contratista</a></li>
+          <li><a href="#">Transportista</a></li>
         </ul>
       <nav class="white" role="navigation" >
       <div class="nav-wrapper" style="color: rgba(255, 0, 0, 0.445);background-color:#26A69A;">
@@ -29,8 +34,8 @@
           <a href="{% url 'ver_perfil' request.user.id %}" class="brand-logo right"><img class="circle foto-perfil-esquina" src="{{ request.user.foto.url }}" style=" height: 40px; width: 40px"></a>
           {% else %}
           <a href="{% url 'ver_perfil' request.user.id %}" class="brand-logo right"><img class="circle foto-perfil-esquina" src="{% static 'img/pordefecto.jpg' %}" style=" height: 40px; width: 40px"></a>
-          {% endif%} 
-
+          {% endif%}
+          <li><a class="dropdown-trigger" href="#" data-target="dropdown2">Ver Anuncios<i class="material-icons right">arrow_drop_down</i></a></li>
           <li><a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a></li>
           <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Crar Anuncio<i class="material-icons right">arrow_drop_down</i></a></li>
           
@@ -52,44 +57,15 @@
 
  </main>
 
-  <strong>
-      <div class="container">
-        <div class="section">
-
-          <div class="row">
-            <div class="col s12 m4">
-              <div class="icon-block">
-                <h2 class="center brown-text"><i class="material-icons">local_taxi</i></h2>
-                <h5 class="center">Ecomiendas/Paquetes</h5>
-              </div>
-            </div>
-
-            <div class="col s12 m4">
-              <div class="icon-block">
-                <h2 class="center brown-text"><i class="material-icons">local_shipping</i></h2>
-                <h5 class="center">Fletes/Mudanzas</h5>
-              </div>
-            </div>
-
-            <div class="col s12 m4">
-              <div class="icon-block">
-                <h2 class="center brown-text"><i class="material-icons">airport_shuttle</i></h2>
-                <h5 class="center">Viajes</h5>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-  </strong>
+  
   <!--FOOTER-->
   <hr>
     <footer>
     <div class="footer-copyright">
-            <div class="container">
+            <div class="container" style="background-color: white">
             &copy; Desarrollado por Alumnos del Informatorio 2020 | Comision 7 | Grupo 1 | Todos los derechos reservados
         
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <a href="{% url 'index' %}">ReComienda</a>
             </div>
           </div>
       
