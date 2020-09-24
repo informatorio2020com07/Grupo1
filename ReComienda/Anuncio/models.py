@@ -2,6 +2,8 @@ from django.db import models
 #from django.contrib.auth.models import User
 from usuario.models import Perfil
 # Create your models here.
+from .validators import validate_valor_calificacion
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Localidad(models.Model):
 	localidad = models.CharField(max_length= 60)
@@ -29,7 +31,7 @@ class Anuncio_Trans(models.Model):
 	fecha_caducidad = models.DateTimeField()
 	telefono = models.CharField(null=True, max_length=20)
 	permitir_comentarios = models.BooleanField(default = True)
-	
+	puntuadores = models.ManyToManyField(Perfil, blank=True, through="CalificacionPost", related_name="post_calificados")
 	
 	
 	def __str__(self):
@@ -76,3 +78,12 @@ class Comentario(models.Model):
     usuario=models.ForeignKey(Perfil, on_delete = models.SET_NULL, null=True)
     texto=models.TextField(max_length=200)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+class CalificacionPost(models.Model):
+    anuncio=models.ForeignKey(Anuncio_Trans, on_delete = models.CASCADE, related_name="calificacion")
+    usuario=models.ForeignKey(Perfil, on_delete = models.CASCADE, related_name="detalle_calificacion")
+    #calificacion=models.IntegerField(validators = [validate_valor_calificacion])
+    calificacion=models.IntegerField(validators = [MaxValueValidator(5), MinValueValidator(-5)])
+
+    class Meta: 
+        unique_together = ("anuncio","usuario")

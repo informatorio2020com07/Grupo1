@@ -42,17 +42,15 @@
         <h5 class="header col s12 light">DESCRIPCION introductoria de la web...</h5>
       </div>
         <div class="row center">
-          <form method="POST" enctype="multipart/form-data" action="anuncio/search_form.html">
-    {% csrf_token %}
-  
-            {{ form.as_p }}
+          
+{% include "anuncio/search_form.html"%}
+ 
     
-         <p><input placeholder="Buscar Servicios..."></input></p>
+         
        
-          <a href="#" id="download-button" class="btn-large waves-effect waves-light teal lighten-1"><i class="material-icons">search</i></a></a>
-        </div></form>
+          
+    
     </div>
       <div class="parallax"><img src="{% static 'img/ruta.jpg' %}" alt="Unsplashed background img 3"></div>
 </div>
 {% endblock %}
-

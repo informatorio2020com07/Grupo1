@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulonavegador %}
+Buscar
+{% endblock %}
+
+{% block contenido %}
+<form action="" >
+
+{{ form }}
+
+</form>
+
+<h1>Resultado</h1>
+{% include 'anuncio/anuncio_cuadricula.html' with lista_anuncio=publicaciones%}
+{% include 'anuncio/cuadricula_contratista.html' with lista_anuncio=punlicacionesC %}
+{% endblock %}

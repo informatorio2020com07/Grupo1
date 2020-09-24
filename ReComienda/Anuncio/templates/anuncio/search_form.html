@@ -1,4 +1,4 @@
-<form method="GET" style="padding-top: 20px;">
+<form method="GET" style="padding-top: 20px;" action="{% url 'search'%}">
 
 
     <div class="row">
@@ -20,12 +20,6 @@
             <label>Orden</label>
             
         </div>
-
-        <div class="input-field col s12 m6">
-            {{ search_form.categoria }}
-            <label>Filtrar Categorías</label>
-            
-        </div>        
         
         <div class="col s12">
             <label>

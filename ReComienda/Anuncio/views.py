@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Anuncio_Trans, Contratista,Localidad,Transporte, Comentario
+from .models import Anuncio_Trans, Contratista,Localidad,Transporte, Comentario , CalificacionPost
 from .forms import AnuncioForm, ContratistaForm, ComentarioForm, LocalidadForm, TransporteForm,SearchForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -116,3 +116,40 @@ def borrar_anuncioT(request,id):
         if anuncio.usuario == request.user:
             anuncio.delete()
             return redirect("ver_perfil", request.user.id)
+
+
+def search(request): 
+    # parametros
+    param_titulo = request.GET.get('titulo','')
+    #param_payment = request.GET.get('param_payment','')
+    #param_delivery = request.GET.get('param_delivery','')
+    #param_orden =request.GET.get('param_orden','')
+
+    # filtrar titulo
+    publicaciones = Anuncio_Trans.objects.filter(titulo__contains=param_titulo)
+    publicacionesC = Contratista.objects.filter(titulo__contains=param_titulo)
+    form = SearchForm()
+    contexto = {"form":form, "publicaciones":publicaciones, "publicacionesC":publicacionesC}
+
+    return render(request, "anuncio/search.html", contexto)
+
+@login_required
+def calificar_anuncio(request, id, calificacion):
+    perfil = request.user
+    anuncio = Anuncio_Trans.objects.get(pk=id)
+    calif = perfil.detalle_calificacion.filter(anuncio=anuncio).first()
+
+    if calif:
+        calif.calificacion = calificacion
+    else:
+        calif = CalificacionPost()
+        calif.anuncio = anuncio
+        calif.calificacion = calificacion
+        calif.usuario = perfil
+
+    try:
+        calif.full_clean() 
+        calif.save()
+    except Exception as ex: 
+        return HttpResponse("error")
+    return redirect("ver_anuncio", anuncio.id)

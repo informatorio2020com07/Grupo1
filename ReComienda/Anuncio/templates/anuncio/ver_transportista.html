@@ -7,7 +7,7 @@ Anuncio : {{anuncio.titulo}}
 {% block contenido %}
 
  <div class="container">
-}
+
 <div class="container">
       <div class="row">
         <div class="col s12">
@@ -41,7 +41,37 @@ Anuncio : {{anuncio.titulo}}
                     <button type="submit" onclick="return confirm('Seguro?')" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
                 </form>
             {% endif %}
-          </div>
+          </div>                      
+
+      <div class="card-action">
+                      
+                      <span><h6>Calificación: {{anuncio.puntaje}}</h6></span>
+                          
+                    </div>
+                    <div class="row calificacion-box">
+              <div class="row center-align calificacion-botonera">                
+                <div class="col s2">
+                  <a class="waves-effect waves-light btn pulse light-green accent-3" href="{% url 'calificar_anuncio' anuncio.id 0 %}">0</a>
+                </div>
+                <div class="col s2">
+                  <a class="waves-effect waves-light btn {% if calificacion >= 1 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 1 %}">1</a>
+                </div>
+                <div class="col s2">
+                  <a class="waves-effect waves-light btn {% if calificacion >= 2 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 2 %}">2</a>
+                </div>
+                <div class="col s2">
+                  <a class="waves-effect waves-light btn {% if calificacion >= 3 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 3 %}">3</a>
+                </div>
+                <div class="col s2">
+                  <a class="waves-effect waves-light btn {% if calificacion >= 4 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 4 %}">4</a>
+                </div>
+                <div class="col s2">
+                  <a class="waves-effect waves-light btn {% if calificacion >= 5 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 5 %}">5</a>
+                </div>
+
+              </div>
+            </div> 
+
  
   </div>
  {% if anuncio.permitir_comentarios %}
