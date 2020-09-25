@@ -176,3 +176,12 @@ def calificar_anuncio(request, id, calificacion):
     except Exception as ex: 
         return HttpResponse("error")
     return redirect("ver_anuncio", anuncio.id)
+
+def ver_anuncios(request):
+    lista_trans=Anuncio_Trans.objects.all()
+    lista_contra=Contratista.objects.all()
+    contexto = {
+    "lista_trans" : lista_trans,
+    "lista_contra" : lista_contra,
+    }
+    return render(request,"anuncio/ver_anuncios.html", contexto)

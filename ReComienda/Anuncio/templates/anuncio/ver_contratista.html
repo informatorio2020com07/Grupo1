@@ -32,6 +32,14 @@ Anuncio : {{anuncio.titulo}}
           </div>
         </div>    
   </div></div>
+  <div class="row opciones-box">
+            {% if request.user == anuncio.usuario%}
+                <form method="POST" action="{%url 'borrar_anuncioT' anuncio.id%}">
+                    {% csrf_token %}
+                    <button type="submit" onclick="return confirm('Seguro?')" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
+                </form>
+            {% endif %}
+          </div>
 <hr>
 <hr>
   <h5>OTROS ANUNCIOS</h5>
