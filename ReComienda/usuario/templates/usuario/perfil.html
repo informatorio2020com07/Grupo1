@@ -26,8 +26,9 @@
            <h3> Nombre: {{ perfil.first_name }}</h3>
             <h3>Apellido: {{ perfil.last_name }}</h3>
             <h3>Email:{{ perfil.email }}</h3>
-            <h3>Telefono{{perfil.telefono}}</h3>
-
+            {% if perfil.telefono%}
+                <h3>Telefono{{ perfil.telefono }}</h3>
+            {% endif%}
 
                   </div>
 {% endblock %}
