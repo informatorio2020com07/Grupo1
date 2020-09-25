@@ -172,11 +172,32 @@ def calificar_anuncio(request, id, calificacion):
         return HttpResponse("error")
     return redirect("ver_anuncio", anuncio.id)
 
+@login_required
 def ver_anuncios(request):
-    lista_trans=Anuncio_Trans.objects.all()
-    lista_contrato=Contratista.objects.all()
-    contexto = {
-    "lista_trans" : lista_trans,
-    "lista_contrato" : lista_contrato,
+    if request.GET:
+        search_form = SearchForm(request.GET)
+    else:
+        search_form = SearchForm()
+
+    filtro_titulo = request.GET.get("titulo", "")
+    filtro_localidad = request.GET.get("localidad", "")
+    orden_anuncio = request.GET.get("orden", None)
+    lista_anuncio = Anuncio_Trans.objects.filter(titulo__icontains = filtro_titulo).filter(localidad_destino__localidad__icontains=filtro_localidad)
+    lista_contrato = Contratista.objects.filter(titulo__icontains = filtro_titulo).filter(localidad_destino__localidad__icontains=filtro_localidad)
+    #localidades = Localidad.objects.filter(localidad__icontains = filtro_localidad)
+    
+    if orden_anuncio == "titulo":
+        lista_anuncio= lista_anuncio.order_by("titulo")
+        lista_contrato= lista_contrato.order_by("titulo")
+    elif orden_anuncio == "localidad":
+        lista_anuncio= lista_anuncio.order_by("localidad")
+        lista_contrato= lista_contrato.order_by("localidad")
+
+    contexto={ 
+    "lista_anuncio" : lista_anuncio,
+    "lista_contrato": lista_contrato,
+    #"localidades": localidades,
+    "search_form":search_form,
+
     }
     return render(request,"anuncio/ver_anuncios.html", contexto)
