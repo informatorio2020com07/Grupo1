@@ -20,8 +20,15 @@ def index(request):
         lista_anuncio= lista_anuncio.order_by("titulo")
         lista_contrato= lista_contrato.order_by("titulo")
     elif orden_anuncio == "localidad":
-        lista_anuncio= lista_anuncio.order_by("localidad")
-        lista_contrato= lista_contrato.order_by("localidad")
+        lista_anuncio= lista_anuncio.order_by("localidad_destino")
+        lista_contrato= lista_contrato.order_by("localidad_destino")
+    elif orden_anuncio == "antiguo":
+        lista_anuncio= lista_anuncio.order_by("fecha_publicacion")
+        lista_contrato= lista_contrato.order_by("fecha_viaje")
+    elif orden_anuncio == "nuevo":
+        lista_anuncio= lista_anuncio.order_by("-fecha_publicacion")
+        lista_contrato= lista_contrato.order_by("-fecha_viaje")
+
 
     contexto={ 
     "lista_anuncio" : lista_anuncio,
@@ -190,8 +197,14 @@ def ver_anuncios(request):
         lista_anuncio= lista_anuncio.order_by("titulo")
         lista_contrato= lista_contrato.order_by("titulo")
     elif orden_anuncio == "localidad":
-        lista_anuncio= lista_anuncio.order_by("localidad")
-        lista_contrato= lista_contrato.order_by("localidad")
+        lista_anuncio= lista_anuncio.order_by("localidad_destino")
+        lista_contrato= lista_contrato.order_by("localidad_destino")
+    elif orden_anuncio == "antiguo":
+        lista_anuncio= lista_anuncio.order_by("fecha_publicacion")
+        lista_contrato= lista_contrato.order_by("fecha_viaje")
+    elif orden_anuncio == "nuevo":
+        lista_anuncio= lista_anuncio.order_by("-fecha_publicacion")
+        lista_contrato= lista_contrato.order_by("-fecha_viaje")
 
     contexto={ 
     "lista_anuncio" : lista_anuncio,
