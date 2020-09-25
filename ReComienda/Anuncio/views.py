@@ -22,12 +22,7 @@ def index(request):
     elif orden_anuncio == "localidad":
         lista_anuncio= lista_anuncio.order_by("localidad")
         lista_contrato= lista_contrato.order_by("localidad")
-    elif orden_anuncio == "antiguo":
-        lista_anuncio= lista_anuncio.order_by("fecha_creado")
-        lista_contrato= lista_contrato.order_by("fecha_creado")
-    elif orden_anuncio == "nuevo":
-        lista_anuncio= lista_anuncio.order_by("-fecha_creado")
-        lista_contrato= lista_contrato.order_by("-fecha_creado")
+
     contexto={ 
     "lista_anuncio" : lista_anuncio,
     "lista_contrato": lista_contrato,
@@ -142,11 +137,11 @@ def search(request):
         lista_anuncio= lista_anuncio.order_by("localidad_destino")
         lista_contrato= lista_contrato.order_by("localidad_destino")
     elif orden_anuncio == "antiguo":
-        lista_anuncio= lista_anuncio.order_by("fecha_creado")
-        lista_contrato= lista_contrato.order_by("fecha_creado")
+        lista_anuncio= lista_anuncio.order_by("fecha_publicacion")
+        lista_contrato= lista_contrato.order_by("fecha_viaje")
     elif orden_anuncio == "nuevo":
-        lista_anuncio= lista_anuncio.order_by("-fecha_creado")
-        lista_contrato= lista_contrato.order_by("-fecha_creado")
+        lista_anuncio= lista_anuncio.order_by("-fecha_publicacion")
+        lista_contrato= lista_contrato.order_by("-fecha_viaje")
     contexto={ 
     "lista_anuncio" : lista_anuncio,
     "lista_contrato": lista_contrato,
@@ -176,3 +171,33 @@ def calificar_anuncio(request, id, calificacion):
     except Exception as ex: 
         return HttpResponse("error")
     return redirect("ver_anuncio", anuncio.id)
+
+@login_required
+def ver_anuncios(request):
+    if request.GET:
+        search_form = SearchForm(request.GET)
+    else:
+        search_form = SearchForm()
+
+    filtro_titulo = request.GET.get("titulo", "")
+    filtro_localidad = request.GET.get("localidad", "")
+    orden_anuncio = request.GET.get("orden", None)
+    lista_anuncio = Anuncio_Trans.objects.filter(titulo__icontains = filtro_titulo).filter(localidad_destino__localidad__icontains=filtro_localidad)
+    lista_contrato = Contratista.objects.filter(titulo__icontains = filtro_titulo).filter(localidad_destino__localidad__icontains=filtro_localidad)
+    #localidades = Localidad.objects.filter(localidad__icontains = filtro_localidad)
+    
+    if orden_anuncio == "titulo":
+        lista_anuncio= lista_anuncio.order_by("titulo")
+        lista_contrato= lista_contrato.order_by("titulo")
+    elif orden_anuncio == "localidad":
+        lista_anuncio= lista_anuncio.order_by("localidad")
+        lista_contrato= lista_contrato.order_by("localidad")
+
+    contexto={ 
+    "lista_anuncio" : lista_anuncio,
+    "lista_contrato": lista_contrato,
+    #"localidades": localidades,
+    "search_form":search_form,
+
+    }
+    return render(request,"anuncio/ver_anuncios.html", contexto)

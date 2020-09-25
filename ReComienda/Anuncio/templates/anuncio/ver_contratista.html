@@ -32,9 +32,17 @@ Anuncio : {{anuncio.titulo}}
           </div>
         </div>    
   </div></div>
-<hr>
+  <div class="row opciones-box">
+            {% if request.user == anuncio.usuario%}
+                <form method="POST" action="{%url 'borrar_anuncioT' anuncio.id%}">
+                    {% csrf_token %}
+                    <button type="submit" onclick="return confirm('Seguro?')" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
+                </form>
+            {% endif %}
+          </div>
+<hr>                   
 <hr>
   <h5>OTROS ANUNCIOS</h5>
-  {% include 'anuncio/cuadricula_contratista.html' with lista_anuncio=lista_anuncio %}
+  {% include 'anuncio/cuadricula_contratista.html' with lista_anuncio=lista_contrato %}
 
 {% endblock %}

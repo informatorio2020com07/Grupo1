@@ -21,10 +21,7 @@
           <li><a href="{% url 'anuncio_nuevo' %}">Contratista</a></li>
           <li><a href="{% url 'nuevo_anuncio' %}">Transportista</a></li>
         </ul>
-        <ul id="dropdown2" class="dropdown-content">
-          <li><a href="#">Contratista</a></li>
-          <li><a href="#">Transportista</a></li>
-        </ul>
+        
       <nav class="white" role="navigation" >
       <div class="nav-wrapper" style="color: rgba(255, 0, 0, 0.445);background-color:#26A69A;">
         <a href="{% url 'index' %}" class="brand-logo" style="margin: 0;"> <img style="width: 80px; height: 80px; vertical-align: middle;" src="{% static 'img/rt.png' %}" alt="logo Recomienda">ReComienda</a>
@@ -35,7 +32,7 @@
           {% else %}
           <a href="{% url 'ver_perfil' request.user.id %}" class="brand-logo right"><img class="circle foto-perfil-esquina" src="{% static 'img/pordefecto.jpg' %}" style=" height: 40px; width: 40px"></a>
           {% endif%}
-          <li><a class="dropdown-trigger" href="#" data-target="dropdown2">Ver Anuncios<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a href="{% url 'ver_anuncios' %}">Ver Anuncios</a></li>
           <li><a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a></li>
           <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Crear Anuncio<i class="material-icons right">arrow_drop_down</i></a></li>
           

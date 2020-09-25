@@ -49,11 +49,11 @@ def editar_perfil(request):
 
 
 
-
+@login_required
 def cerrar_sesion(request):
 	logout(request)
 	return redirect("index")
-
+@login_required
 def ver_perfil(request,id):
     perfil = Perfil.objects.get(pk=id)
     contexto = {

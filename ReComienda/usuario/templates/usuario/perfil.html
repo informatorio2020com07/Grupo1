@@ -16,12 +16,18 @@
         
         <a href="{% url 'editar_perfil' %}">Editar</a> <!--<button>Editar</button> -->
     {% else %}
-        <button>ver anuncios</button>
+       <a href="{% url 'ver_anuncios' %}"><button>ver anuncios</button></a> 
     {% endif %}
         <div class="row">
             <div class="divider"></div>
         </div>
         <div class="row">
             <h1>Referencias</h1>
+           <h3> Nombre: {{ perfil.first_name }}</h3>
+            <h3>Apellido: {{ perfil.last_name }}</h3>
+            <h3>Email:{{ perfil.email }}</h3>
+            <h3>Telefono{{perfil.telefono}}</h3>
+
+
                   </div>
 {% endblock %}
