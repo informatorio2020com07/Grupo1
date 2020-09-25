@@ -12,22 +12,26 @@ def index(request):
     filtro_titulo = request.GET.get("titulo", "")
     filtro_localidad = request.GET.get("localidad", "")
     orden_anuncio = request.GET.get("orden", None)
-    lista_anuncio = Anuncio_Trans.objects.filter(titulo__icontains = filtro_titulo)
-    lista_contrato = Contratista.objects.filter(titulo__icontains = filtro_titulo)
-    localidades = Localidad.objects.filter(localidad__icontains = filtro_localidad)
+    lista_anuncio = Anuncio_Trans.objects.filter(titulo__icontains = filtro_titulo).filter(localidad_destino__localidad__icontains=filtro_localidad)
+    lista_contrato = Contratista.objects.filter(titulo__icontains = filtro_titulo).filter(localidad_destino__localidad__icontains=filtro_localidad)
+    #localidades = Localidad.objects.filter(localidad__icontains = filtro_localidad)
     
     if orden_anuncio == "titulo":
-        anuncios= anuncios.order_by("titulo")
+        lista_anuncio= lista_anuncio.order_by("titulo")
+        lista_contrato= lista_contrato.order_by("titulo")
     elif orden_anuncio == "localidad":
-        anuncios= anuncios.order_by("localidad")
+        lista_anuncio= lista_anuncio.order_by("localidad")
+        lista_contrato= lista_contrato.order_by("localidad")
     elif orden_anuncio == "antiguo":
-        anuncios= anuncios.order_by("fecha_creado")
+        lista_anuncio= lista_anuncio.order_by("fecha_creado")
+        lista_contrato= lista_contrato.order_by("fecha_creado")
     elif orden_anuncio == "nuevo":
-        anuncios= anuncios.order_by("-fecha_creado")
+        lista_anuncio= lista_anuncio.order_by("-fecha_creado")
+        lista_contrato= lista_contrato.order_by("-fecha_creado")
     contexto={ 
     "lista_anuncio" : lista_anuncio,
     "lista_contrato": lista_contrato,
-    "localidades": localidades,
+    #"localidades": localidades,
     "search_form":search_form,
 
     }
@@ -77,6 +81,7 @@ def nuevo_anuncio(request):
     return render(request, "anuncio/nuevo_anuncio.html", contexto)
 
 #Contratista
+@login_required
 def anuncio_nuevo(request):
     if request.method == "POST":
         form=ContratistaForm(request.POST)
@@ -118,20 +123,36 @@ def borrar_anuncioT(request,id):
 
 
 def search(request): 
-    # parametros
-    param_titulo = request.GET.get('titulo','')
-    param_localidad = request.GET.get('localidad','')
-    #param_payment = request.GET.get('param_payment','')
-    #param_delivery = request.GET.get('param_delivery','')
-    #param_orden =request.GET.get('param_orden','')
+    if request.GET:
+        search_form = SearchForm(request.GET)
+    else:
+        search_form = SearchForm()
 
-    # filtrar titulo
-    publicaciones = Anuncio_Trans.objects.filter(titulo__contains=param_titulo)
-    publicacionesC = Contratista.objects.filter(titulo__contains=param_titulo)
-    anuncio = Localidad.objects.filter(localidad__contains=param_localidad)
-    form = SearchForm()
-    contexto = {"form":form, "publicaciones":publicaciones, "publicacionesC":publicacionesC,
-    "anuncio":anuncio,}
+    filtro_titulo = request.GET.get("titulo", "")
+    filtro_localidad = request.GET.get("localidad", "")
+    orden_anuncio = request.GET.get("orden", None)
+    lista_anuncio = Anuncio_Trans.objects.filter(titulo__icontains = filtro_titulo).filter(localidad_destino__localidad__icontains=filtro_localidad)
+    lista_contrato = Contratista.objects.filter(titulo__icontains = filtro_titulo).filter(localidad_destino__localidad__icontains=filtro_localidad)
+    #localidades = Localidad.objects.filter(localidad__icontains = filtro_localidad)
+    
+    if orden_anuncio == "titulo":
+        lista_anuncio= lista_anuncio.order_by("titulo")
+        lista_contrato= lista_contrato.order_by("titulo")
+    elif orden_anuncio == "localidad":
+        lista_anuncio= lista_anuncio.order_by("localidad_destino")
+        lista_contrato= lista_contrato.order_by("localidad_destino")
+    elif orden_anuncio == "antiguo":
+        lista_anuncio= lista_anuncio.order_by("fecha_creado")
+        lista_contrato= lista_contrato.order_by("fecha_creado")
+    elif orden_anuncio == "nuevo":
+        lista_anuncio= lista_anuncio.order_by("-fecha_creado")
+        lista_contrato= lista_contrato.order_by("-fecha_creado")
+    contexto={ 
+    "lista_anuncio" : lista_anuncio,
+    "lista_contrato": lista_contrato,
+    #"localidades": localidades,
+    "search_form":search_form,
+    }
 
     return render(request, "anuncio/search.html", contexto)
 

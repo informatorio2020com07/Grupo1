@@ -33,9 +33,14 @@ class Anuncio_Trans(models.Model):
 	permitir_comentarios = models.BooleanField(default = True)
 	puntuadores = models.ManyToManyField(Perfil, blank=True, through="CalificacionPost", related_name="post_calificados")
 	
-	
 	def __str__(self):
 		return self.titulo
+
+	def puntaje(self):
+		puntaje = 0
+		for x in self.calificacion.all():
+			puntaje += x.calificacion
+		return puntaje
 
 		
 """class Anuncio_Contra(models.Model):
@@ -83,7 +88,7 @@ class CalificacionPost(models.Model):
     anuncio=models.ForeignKey(Anuncio_Trans, on_delete = models.CASCADE, related_name="calificacion")
     usuario=models.ForeignKey(Perfil, on_delete = models.CASCADE, related_name="detalle_calificacion")
     #calificacion=models.IntegerField(validators = [validate_valor_calificacion])
-    calificacion=models.IntegerField(validators = [MaxValueValidator(5), MinValueValidator(-5)])
+    calificacion=models.IntegerField(validators = [MaxValueValidator(5), MinValueValidator(0)])
 
     class Meta: 
         unique_together = ("anuncio","usuario")
