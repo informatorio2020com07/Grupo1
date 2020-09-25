@@ -4,4 +4,4 @@ from django.contrib.auth.models import AbstractUser
 
 class Perfil(AbstractUser):
 	foto = models.ImageField(upload_to="Perfil", null=True, blank=True)
-
+	telefono = models.CharField(null=True, max_length=20)

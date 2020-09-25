@@ -12,3 +12,10 @@ barracas35
 
 Franquito4
 matracas44
+
+Roberto90
+saraza90
+
+mysql> select aes_encrypt("manzana","clave");
+select aes_descrypt(@palabra, "clave");
+fields = ("first_name","last_name","username", "email", "password", "nacimiento", "foto")

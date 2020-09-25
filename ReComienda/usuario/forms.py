@@ -7,11 +7,11 @@ class NuevoUsuarioForm(UserCreationForm):
     class Meta:
         model = Perfil
         fields = ("first_name","last_name","username", "email", "password1",
-         "password2","foto")
+         "password2","foto","telefono")
 
     def __init__(self, *args, **kwargs):
         super(UserCreationForm, self).__init__(*args, **kwargs)
-        lista=["Nombre","Apellido","Usuario","Email","contraseña","repetir contraseña"]
+        lista=["Nombre","Apellido","Usuario","Email","contraseña","repetir contraseña","telefono"]
         for x,valor in enumerate(self.fields):
             self.fields[valor].widget.attrs.update({'class' : 'validate','placeholder' : lista[x], 'type' : 'text'})
             if x==len(lista)-1:
@@ -21,4 +21,4 @@ class NuevoUsuarioForm(UserCreationForm):
 class EditarPerfilForm(UserChangeForm):
     class Meta:
         model = Perfil
-        fields = ("first_name","last_name","username", "email", "password", "foto")
+        fields = ("first_name","last_name","username", "email", "foto")
