@@ -5,30 +5,45 @@
 {% endblock %}
 
 {% block contenido %}
-    Perfil: {{ perfil.username }}<br>
-    {% if perfil.foto %}
-    <img src="{{ perfil.foto.url }}" alt="imagen de perfil">
+{% if perfil.foto %}
+<div class="row">    
+<h1>  Perfil: {{ perfil.username }}</h1></div>
+<div align="center" >
+<p> <img src="{{ perfil.foto.url }}" alt="imagen de perfil" style="width: 400px; height: 400px; vertical-align: middle; "></p></div>
+    <hr>
+<div align="center" style="background-color: #E0E6E8; opacity: 0.5; color: black" >
+<strong>
+<table style="width: 40px; text-align: center; font-size: 20px;">
+<tr style="background-color: cornflowerblue"> <th colspan="4"> datos del perfil </th> </tr>
+<tr> <th> Nombre: </th> <td></td><td></td><td>{{ perfil.first_name }} </td> </tr>
+<tr> <th> Apellido: </th><td></td><td></td><td> {{ perfil.last_name }}</td> </tr>
+<tr> <th> Email: </th><td></td><td></td><td>{{ perfil.email }}</td> </tr>
+<tr> <th> Telefono: </th><td></td><td></td><td>{{ perfil.telefono }}</td> </tr>
+</table>        
+</strong>
+</div>
     {% else %}
-       <img src="{% static 'img/pordefecto.jpg' %}" alt="archivo por defecto">
+<div class="row">    
+<h1>  Perfil: {{ perfil.username }}</h1>
+<p> <img src="{% static 'img/pordefecto.jpg' %}" alt="archivo por defecto" style="width: 400px; height: 400px; vertical-align: middle;"></p></div>
+    <hr>
+<strong>
+<table style="width: 40px; text-align: center; font-size: 20px;background-color: rgb(0,0,255); opacity: 0.5;">
+<tr> <th colspan="4"> datos del perfil </th> </tr>
+<tr> <th> Nombre: </th> <td></td><td></td><td>{{ perfil.first_name }} </td> </tr>
+<tr> <th> Apellido: </th><td></td><td></td><td> {{ perfil.last_name }}</td> </tr>
+<tr> <th> Email: </th><td></td><td></td><td>{{ perfil.email }}</td> </tr>
+<tr> <th> Telefono: </th><td></td><td></td><td>{{ perfil.telefono }}</td> </tr>
+</table>        
+</strong>
+</div>
+           
     {% endif %}  
 
-    {% if request.user == perfil%}
-        
-        <a href="{% url 'editar_perfil' %}">Editar</a> <!--<button>Editar</button> -->
+    {% if request.user == perfil%} 
+    <a href="{% url 'editar_perfil' %}" class="waves-effect waves-light btn"><i class="material-icons left">settings</i>EDITAR</a>
     {% else %}
-       <a href="{% url 'ver_anuncios' %}"><button>ver anuncios</button></a> 
+    <a href="{% url 'ver_anuncios' %}" class="waves-effect waves-light btn"><i class="material-icons left">directions</i>VER ANUNCIOS</a>
     {% endif %}
-        <div class="row">
-            <div class="divider"></div>
-        </div>
-        <div class="row">
-            <h1>Referencias</h1>
-           <h3> Nombre: {{ perfil.first_name }}</h3>
-            <h3>Apellido: {{ perfil.last_name }}</h3>
-            <h3>Email:{{ perfil.email }}</h3>
-            {% if perfil.telefono%}
-                <h3>Telefono{{ perfil.telefono }}</h3>
-            {% endif%}
-
-                  </div>
+        
 {% endblock %}
