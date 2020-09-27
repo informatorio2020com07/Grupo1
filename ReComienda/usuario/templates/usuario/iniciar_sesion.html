@@ -46,7 +46,7 @@
 <div id="forgotten-container">
    <h1>Restaurar contraseña</h1>
   <span class="close-btn">
-    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png" ></img>
+    <!--<a href="iniciar_sesion">--><img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></a> 
     
   </span>
 
@@ -59,6 +59,8 @@
 {% if user.is_anonymous %}
     <a href="{% url 'nuevo_usuario' %}">Registrarse</a>
 {% endif %}</div>
+
+
 
 
 </body>
