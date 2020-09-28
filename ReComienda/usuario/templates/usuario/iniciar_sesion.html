@@ -10,50 +10,60 @@
 <body>
 	
 <div id="login-button">
-  <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png">
+  <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png"></a>
   </img>
 </div>
 <div id="container">
-  <h1>Iniciar Sesion</h1>
+  <h1>Iniciar Sesión</h1>
   <span class="close-btn">
-    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+    <a href="{% url 'iniciar_sesion' %}"><img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img></a>
+
+
   </span>
 
-  	<form method="POST">
+  	 <form method="POST">
     {% csrf_token %}
     <div class="row">
-        
-            {{form.username}}
+
           
+            {{form.username}}
+
             {{ form.password }}
            
         </div>
-    <button type="submit">Iniciar Sesion</button>
+
+        {{form.errors}}
+        
+    <button type="submit">Iniciar Sesión</button> 
+
     
     <div id="remember-container">
       <input type="checkbox" id="checkbox-2-1" class="checkbox" checked="checked"/>
-      <span id="remember">Recuerdame</span>
-      <span id="forgotten">Olvide mi contraseña</span>
+      <span id="remember">Recuérdame</span>
+      <span id="forgotten">Olvidé mi contraseña</span>
     </div>
 </form>
 </div>
 
 <!-- Forgotten Password Container -->
 <div id="forgotten-container">
-   <h1>Forgotten</h1>
+   <h1>Restaurar contraseña</h1>
   <span class="close-btn">
-    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+    <a href="{% url 'iniciar_sesion' %}"><img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></a> 
+    
   </span>
 
   <form>
     <input type="email" name="email" placeholder="E-mail">
-    <a href="#" class="orange-btn">Get new password</a>
+    <a href="#" class="orange-btn">Obtener nueva constraseña</a>
 </form>
 </div>
 <div>
 {% if user.is_anonymous %}
     <a href="{% url 'nuevo_usuario' %}">Registrarse</a>
 {% endif %}</div>
+
+
 
 
 </body>
