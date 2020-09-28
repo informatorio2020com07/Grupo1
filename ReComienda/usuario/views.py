@@ -44,7 +44,7 @@ def editar_perfil(request):
         if form.is_valid():
             perfil = form.save()
             return redirect("ver_perfil", perfil.id)
-    return render(request, "usuario/editar_perfil.html",{"form":form})
+    return render(request, "usuario/editar_usuario.html",{"form":form, "perfil":perfil})
 
 
 

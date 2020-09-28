@@ -19,6 +19,8 @@ class NuevoUsuarioForm(UserCreationForm):
         self.fields["foto"].widget.attrs.update({'class' : 'texto-rojo','placeholder' : '', 'name':'foto' , 'accept':'image/*'})
 
 class EditarPerfilForm(UserChangeForm):
+    password = None
     class Meta:
         model = Perfil
-        fields = ("first_name","last_name","username", "email", "foto")
+        fields = ["username","first_name","last_name", "telefono", "email", "foto"]
+        widget = {"username":forms.TextInput(attrs={"readonly":"readonly"})}
