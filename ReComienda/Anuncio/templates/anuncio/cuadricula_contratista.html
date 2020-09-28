@@ -7,13 +7,24 @@
            <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" src="{% static 'img/rt.png' %}">
-            </div>
+            <span>
+              
+              <div class="col s4"> 
+                <img class="circle responsive-img" src="{{anuncio.usuario.foto.url }}" alt="imagen de usuario">
+            
+                
+              </div>
+            
+            </span>
+              
+              </div>
            <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{ anuncio.titulo}}<i class="material-icons right">more_vert</i></span>
                 <p>{{anuncio.telefono}}</p>
+                <span class="new badge" data-badge-caption="Calificacion">{{anuncio.puntaje}}</span>
                 <p><a href="#"><p>{{anuncio.Email}}</p></a></p>
-              </div>
-                <div class="card-reveal">
+            </div>
+            <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">{{anuncio.titulo}}<i class="material-icons right">close</i>
           <p>{{anuncio.descripcion}}</p><br>
           <p>Tel: {{anuncio.telefono}}</p><br>

@@ -1,22 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
-{% block contenido %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block titulonavegador %}
+
+{% block titulonavegador %}
   {% if operacion == 'CREAR' %}
         Nuevo Anuncio
     {% else %}
         Editar Anuncio
     {% endif %}
   {% endblock %}<br>
-  </title>
-  <link href="{% static 'css/anuncio_nuevo.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-<body>
+
+
+
+  {% block contenido %}
+  <!-- <link href="{% static 'css/anuncio_nuevo.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/> -->
 
   <div id="container">
   <h1>&bull; ReComienda &bull;</h1>
@@ -35,24 +31,25 @@
     
 
     <div class="name">
-      <label for="name">nombre</label>
+      
       {{ form.nombre }}
     </div>
 
     <div class="email">
-      <label for="email">Email</label>
+      
       {{ form.E_mail }}
     </div> <br/>
   
     <div class="subject" style="color: #26A69A">
-      LOCALIDAD ORIGEN
+      
       {{ form.localidad_origen }}
     </div>
 
     <div class="subject" style="color: #26A69A">
-     LOCALIDAD DESTINO
+     
       {{ form.localidad_destino }}
     </div>
+
     RECORRIDO
     {{ form.recorrido }}
     TITULO
@@ -69,15 +66,19 @@
     {{ form.transporte }}
   </p>
 </fieldset>
-    <div class="input-field col s12" style="color: #26A69A">
-    {{ form.fecha_caducidad }}
+    <div class="col s6" style="color: #26A69A">
+      <label for="fecha_cad">Fecha de Caducidad: </label>
+      <input type="date" id="fecha_cad" value="{{ form.fecha_caducidad }}">
+
+    
     </div>
+
      <div class="telephone" style="color: #26A69A">
 
         TELEFONO
       {{form.telefono}}
 
-  
+      
   
     </div>
 <div>
@@ -86,6 +87,7 @@
       <span>Permitir Comentarios</span>
       </label> 
     </div>
+
 
     {{ form.errors }}
     <div class="submit">
@@ -99,6 +101,5 @@
     </div>
   </form><!-- // End form -->
 </div><!-- // End #container -->
-</body>
-</html>
+
 {% endblock %} 

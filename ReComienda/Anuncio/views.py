@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Anuncio_Trans, Contratista,Localidad,Transporte, Comentario , CalificacionPost
-from .forms import AnuncioForm, ContratistaForm, ComentarioForm, LocalidadForm, TransporteForm,SearchForm
+from .forms import AnuncioForm, ContratistaForm, ComentarioForm, LocalidadForm, TransporteForm,SearchForm, EditarAnuncioTForm
 from django.contrib.auth.decorators import login_required
+import datetime
 # Create your views here.
 def index(request):
     if request.GET:
@@ -68,6 +69,7 @@ def ver_contratista(request,id):
 #Transportista
 @login_required
 def nuevo_anuncio(request):
+    hoy = datetime.datetime.now().strftime("%d/%m/%Y")
     if request.method == "POST":
         form=AnuncioForm(request.POST)
         if form.is_valid():
@@ -79,7 +81,7 @@ def nuevo_anuncio(request):
             contexto={"form":form}
             return render(request, "anuncio/nuevo_anuncio.html", contexto)
     form=AnuncioForm()
-    contexto={"form":form}
+    contexto={"form":form, "hoy":hoy}
     return render(request, "anuncio/nuevo_anuncio.html", contexto)
 
 #Contratista
@@ -122,6 +124,22 @@ def borrar_anuncioT(request,id):
         if anuncio.usuario == request.user:
             anuncio.delete()
             return redirect("ver_perfil", request.user.id)
+
+
+
+@login_required
+def editar_anuncio(request,id):
+    anuncio = Anuncio_Trans.objects.get(pk=id)
+    request_anuncio = request.Anuncio_Trans
+    
+    form = EditarAnuncioTForm(instance=request_anuncio)
+    if request.method == "POST":
+        form = EditarAnuncioTForm(request.POST, request.FILES, instance=request_anuncio)
+        if form.is_valid():
+            anuncio = form.save()
+            return redirect("ver_anuncio", anuncio.id)
+    return render(request, "anuncio/editar_anuncio.html",{"form":form})
+
 
 
 def search(request): 
