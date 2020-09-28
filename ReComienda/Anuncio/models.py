@@ -42,7 +42,12 @@ class Anuncio_Trans(models.Model):
 			puntaje += x.calificacion
 		return puntaje
 
-		
+	def puntaje_promedio(self):
+		total_puntos = self.puntaje()
+		return total_puntos / 5
+
+
+	
 """class Anuncio_Contra(models.Model):
 	nombre = models.CharField(max_length=30)
 	Email = models.EmailField(null=False)

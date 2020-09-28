@@ -1,37 +1,33 @@
 {% extends "base.html" %}
 {% load static %}
 {% block contenido %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block titulonavegador %}
+{% block titulonavegador %}
   {% if operacion == 'CREAR' %}
         Nuevo Anuncio
     {% else %}
         Editar Anuncio
     {% endif %}
-  {% endblock %}<br>
-
-  </title>
-    <link href="{% static 'css/anuncio_nuevo.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-<body>
+  {% endblock %}
 
   <div id="container">
   <h1>&bull; ReComienda &bull;</h1>
-  <div class="underline">
-  </div>
-  <div class="icon_wrapper">
+  <div class="underline"></div>
+
+  <div class="icon_wrapper center">
     <svg class="icon" viewBox="0 0 145.192 145.192">
       <path d="">
       <a href="#!" class="brand-logo" style="margin: 0;"> <img style="width: 80px; height: 80px; vertical-align: middle;display:block; margin:auto;" src="{% static 'img/rt.png' %}" alt="logo Recomienda">
     </svg>
+    <h5>Anuncio Viajente-Contratista</h5>
+    <div class="underline"></div>
+
   </div>
+  
   <form method="POST" enctype="multipart/form-data" >
     {% csrf_token %}
+
     {{ form.as_p }}
+    
     <!-- <div class="name">
       <label for="name"></label>
       {{ form.nombre }}
@@ -60,17 +56,16 @@
     
     </div> -->
     {{ form.errors }}
-    <div class="submit">
+    <div class="submit center">
       <button type="submit" value="Crear Anuncio" id="form_button" >
 
   {% if operacion == 'CREAR' %}
                 Crear
             {% else %}
                 Guardar
-            {% endif %}</button>
+            {% endif %}   <i class="material-icons right">send</i></button>
     </div>
   </form><!-- // End form -->
 </div><!-- // End #container -->
-</body>
-</html>
+
 {% endblock %}

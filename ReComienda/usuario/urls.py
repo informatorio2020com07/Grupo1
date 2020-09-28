@@ -9,6 +9,7 @@ urlpatterns = [
     path("perfil/<int:id>", views.ver_perfil, name="ver_perfil"),
     path("perfil/editar", views.editar_perfil, name="editar_perfil"),
     
+    
 
    
 ]
