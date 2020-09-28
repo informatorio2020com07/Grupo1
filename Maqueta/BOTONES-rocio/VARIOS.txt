@@ -1,0 +1,194 @@
+USUARIO:
+
+*NOMBRE
+*APELLIDO
+*NOMBRE_USURARIO
+*CONTRASEÑA
+*EMAIL  asegurate de tener acceso a este emaol
+*DOMICILIO
+*TELEFONO
+*FOTO
+*DNI
+
+BOTON1: Dana  Estado: enviado
+BOTON2: Rocio  Estado: enviado
+BOTON3: Rocio  Estado: enviado
+BOTON4: Critian Villordo  Estado: enviado
+BOTON5: German  Estado: falta
+BOTON6: *****
+BOTON7: *****
+BOTON8: *****
+BOTON9: Jorge  Estado: enviado
+BOTON10: German  Estado: enviado
+BOTON11: Jorge  Estado: enviado
+
+Dana
+Rocio 
+Pamela
+Jorge
+Cristian_Ariel
+Cristian_Villordo
+Cristian_Asselle
+German
+
+
+Aplicaciones:
+Usuario
+Avisos
+Publicidad
+NavBar fija
+
+Trello:
+avisar por Discord...
+
+
+
+Git:
+Dana --- verificar
+Jorge --- si
+German --- verificar
+Cristian Ariel --- verificar
+Pamela --- 
+
+carpeta maquetado:
+diseños 
+
+dentro de cada app escribimos una carpeta que se llame templates
+models:
+nosotros No definimos la primarykey
+Avisos de nuevas ( BOLA ROJA: avisos urgente
+AMARILLA: consultas problemas
+BOLA VERDE: aviso de tarea terminada)
+A Discord: dudas y consultas al profe.
+
+Cristian_Meza: revisa el Materialize y lo ve con Dana
+
+Cristian y Dana: FrontEnd
+*** Modelos:
+*** urls...
+ Usuarios:
+
+*** TODOS TRABAJAMOS EN LA MASTER...
+*** Avisamos los cambios que hacemos en el Git
+Footer:
+
+*** Borrar mi rama 
+Y crear 2 ramas:
+Usuario
+Avisos
+
+Forma de trabajo adoptada:
+- se crean 2 ramas en Git:
+> rama_usuario: Pamela/ Jorge / Rocio 
+> rama_avisos: German/ Cristian Villordo/ Cristian Asselle
+
+FrontEnd: Dana / Cristian_Meza
+Las actualizaciones se avisan ...
+
+13/09/2020
+
+Usuarios 
+Avisos
+
+
+Rodado:
+
+
+
+buenoo entonces que faltaria?
+Rocio vos que manejas re bien el diseño, hace el dibjito como queremos el formulario
+asi lo paso al html
+el usuario ya esta casi todo hecho teniamos que ponerlo en templates
+Cristian Villordo1:05
+como enviaste en el whatsapp
+despues el post hecho
+miren si le gusta
+asi desplegable
+con la informacion
+
+Buenas! resumo lo que se trabajo hoy con los compañeros presentes:
+> Se crearon 2 ramas en el repo remoto: 
+	- rama-Usuario
+	- rama-Avisos
+>Se modifico el BOTON4: se creo una lista desplagable con dos opciones:
+	1-Contratista
+	2-Transportista
+> Se trabajo sobre el codigo html del BOTON4, en las 2 opciones mencionadas arriba
+
+Los cambios del trabajo, lo hicimos en el repo de @Cristian Villordo y lego los subio 
+al repo remoto en la rama master:
+Les paso el link:
+https://github.com/cdvcristiann/GRUPO-1-INFORMATORIO/commits?author=cdvcristiann
+
+>******* git pull remote nombre_rama *****
+
+>*****   git add .    ******    (guarda todos los cambios)
+>*****  git branch -d nombre_rama  ***** (borra la rama creada)
+
+>**** git push origin : nombre_rama_a_borrar ***** (elimina la rama REMOTA)
+
+>**** git branch -d  nombre_rama ***** (elimina la rama LOCAL )
+fuente: https://vabadus.es/blog/otros/trabajando-con-git-eliminar-ramas-locales-y-remotas
+
+TRAER Y COMBINA CAMBIOS:
+
+>   git remote -v   < (muestra los links de los repositorios clonados)
+>   git pull  < (para traer y combinar automáticamente la rama remota 
+con tu rama actual)
+
+>  git fetch origin  < ( Si clonas un repositorio, el comando de clonar 
+automáticamente añade ese repositorio remoto con el nombre “origin”. 
+Por lo tanto, git fetch origin se trae todo el trabajo nuevo que ha sido 
+enviado a ese servidor desde que lo clonaste 
+(o desde la última vez que trajiste datos). 
+Es importante destacar que el comando git fetch solo trae datos a tu 
+repositorio local - ni lo combina automáticamente con tu trabajo ni 
+modifica el trabajo que llevas hecho. 
+La combinación con tu trabajo debes hacerla manualmente cuando 
+estés listo.)
+
+ENVIAR A TUS REMOTOS:
+
+ >  git push origin master  <  (envia los cambios de nuestra local "master"
+a la remota "master").
+
+fuente:https://git-scm.com/book/es/v2/Fundamentos-de-Git-Trabajar-con-Remotos
+
+INSPECCIONAR UN REMOTO:
+
+> git remote show origin  < (muestra los remotos)
+aca muestra los nombres de las ramas creadas en el remoto:
+	* remote origin
+  Fetch URL: https://github.com/cdvcristiann/GRUPO-1-INFORMATORIO.git
+  Push  URL: https://github.com/cdvcristiann/GRUPO-1-INFORMATORIO.git
+  HEAD branch: master
+  Remote branches:
+    Jorge-rama        tracked
+    Villordo_Cristian tracked
+    master            tracked
+    rama-Avisos       tracked
+    rama-Usuario      tracked
+  Local branch configured for 'git pull':
+    master merges with remote master
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+
+>   git push (remoto= origin) (rama= nombre de la rama)
+
+
+ejemplo: > git push origin rama-Usuario
+
+
+>  git push origin rocio-local:rama-Usuario
+	LLEVA LOS CAMBIOS DE MI RAMA LOCAL "rocio-local"
+	A LA RAMA REMOTA "rama-Usuario".
+
+> WIDGET: es un gráfico en una interfaz gráfica de usuario es un elemento de interacción,
+ como un botón o una barra de desplazamiento.
+
+LLEVAR MI RAMA EL REMOTO:
+	CREAR LA RAMA:
+
+> git checkout 
+
+> git push origin rocio_ramirez
