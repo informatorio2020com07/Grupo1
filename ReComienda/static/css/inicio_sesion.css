@@ -52,14 +52,14 @@ img{
   cursor: pointer;
   font-family: 'Open Sans Condensed', sans-serif;
   line-height: 18px;
-  top: 3px;
-  right: 20px;
+  top: 6px;
+  right: 25px;
   width: 10px;
   height: 10px;
   text-align: center;
   border-radius: 15px;
   opacity: .6;
-  background: #009688;
+  background: rgba(0,150,136,1);
   -webkit-transition: all 2s ease-in-out;
   -moz-transition: all 2s ease-in-out;
   -o-transition: all 2s ease-in-out;
@@ -123,7 +123,7 @@ a,button{
   font-family: 'Open Sans Condensed', sans-serif;
   text-align: center;
   padding: 4px 8px;
-  background: #009688;
+  background: rgba(0,150,136,1);
 }
 
 
@@ -140,11 +140,11 @@ a:hover{
 
   position: relative;
   cursor: pointer;
-	-webkit-appearance: none;
-	padding: 5px;
-	border-radius: 4px;
+  -webkit-appearance: none;
+  padding: 5px;
+  border-radius: 4px;
   background: rgba(3,3,3,.2);
-	display: inline-block;
+  display: inline-block;
   width: 16px;
   height: 15px;
 }
@@ -215,6 +215,6 @@ a:hover{
 }
 
 .orange-btn{
-  background: #009688;
+  background: rgba(0,150,136,1);
 }
 	
