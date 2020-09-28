@@ -17,7 +17,7 @@ Anuncio : {{anuncio.titulo}}
                 <span class="card-title activator grey-text text-darken-4">{{ anuncio.titulo}}<i class="material-icons right">more_vert</i></span>
                 <p>{{anuncio.tel}}</p>                
                 {{ anuncio.usuario.username}}
-                <p><a href="#"><p>{{anuncio.Email}}</p></a></p>
+                <p><a href="{% static 'mailto:{{anuncio.Email}}' %}"><p>{{anuncio.Email}}</p></a></p>
               </div>
                 <div class="card-reveal">
           <span class="card-title grey-text text-darken-4">{{anuncio.titulo}}<i class="material-icons right">close</i>

@@ -12,6 +12,9 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
    <link href="{% static 'css/search.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+   <meta name="description" content="ReComienda, trabajamos para conectar la provincia del Chaco con los servicios que necesitan los chaqueños.">
+   <meta name="author" content="Desarrollado por Alumnos del Informatorio 2020 | Comision 7 |'VILLORDO, Cristian Daniel', '' ">
+   <link rel="shortcut icon"  href="{% static 'img/favicon-32x32.png' %}" type="image/x-icon">
  </head>
 
 <body>
@@ -32,8 +35,8 @@
           {% else %}
           <a href="{% url 'ver_perfil' request.user.id %}" class="brand-logo right"><img class="circle foto-perfil-esquina" src="{% static 'img/pordefecto.jpg' %}" style=" height: 40px; width: 40px"></a>
           {% endif%}
-          <li><a href="{% url 'ver_anuncios' %}">Ver Anuncios</a></li>
-          <li><a href="{% url 'cerrar_sesion' %}">Cerrar sesión</a></li>
+          <li><a href="{% url 'ver_anuncios' %}"> <i class="material-icons left">remove_red_eye</i>Ver Anuncios</a></li>
+          <li><a href="{% url 'cerrar_sesion' %}"><i class="material-icons left">exit_to_app</i>Cerrar sesión</a></li>
           <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Crear Anuncio<i class="material-icons right">arrow_drop_down</i></a></li>
           
           {% else %}

@@ -17,7 +17,7 @@ Anuncio : {{anuncio.titulo}}
             </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{ anuncio.titulo}}<i class="material-icons right">more_vert</i></span>
-                <p>{{anuncio.telefono}}</p>                
+                <p><a title="Enviar mensaje" href="https://web.whatsapp.com/send?phone=54{{anuncio.telefono}}&text=Hola%2C+%C2%BFC%C3%B3mo+est%C3%A1s%3F" target="nombre_marco"><img src="{% static 'img/whatsapp-logo.png' %}" img style="width: 40px; height: 40px; vertical-align: middle;" alt="WhatsApp" /></a></p>                
                 {{ anuncio.usuario.username}}
                 <p><a href="#"><p>{{anuncio.E_mail}}</p></a></p>
               </div>

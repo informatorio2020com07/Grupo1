@@ -21,7 +21,7 @@ class AnuncioForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(AnuncioForm, self).__init__(*args, **kwargs)
         self.fields["permitir_comentarios"].widget.attrs.update({"type":"checkbox", "checked":"checked"})
-
+        self.fields['fecha_caducidad'].widget.attrs.update({ 'class' : 'input-field col s12','placeholder' : 'ingrese fecha', 'type' : 'date'})
         """
         self.fields['nombre'].widget.attrs.update({'id' :  'name_input','placeholder' : 'ingrese nombre', 'type' : 'text'})
         self.fields['Email'].widget.attrs.update({'id' : 'email_input','placeholder' : 'ingrese email', 'type' : 'email'})
