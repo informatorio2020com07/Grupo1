@@ -12,15 +12,49 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nanum+Gothic:wght@700&display=swap" rel="stylesheet">
   <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+<<<<<<< HEAD
   <link rel="stylesheet" href="{% static 'css/style.css' %}">  
 
 </head>
+=======
+   <link href="{% static 'css/search.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+   <meta name="description" content="ReComienda, trabajamos para conectar la provincia del Chaco con los servicios que necesitan los chaqueños.">
+   <meta name="author" content="Desarrollado por Alumnos del Informatorio 2020 | Comision 7 |'VILLORDO, Cristian Daniel', '' ">
+   <link rel="shortcut icon"  href="{% static 'img/favicon-32x32.png' %}" type="image/x-icon">
+ </head>
+>>>>>>> master
 
 <body>
   <header>
      {% include 'navbar.html' %}
         
+<<<<<<< HEAD
     </header>
+=======
+      <nav class="white" role="navigation" >
+      <div class="nav-wrapper" style="color: rgba(255, 0, 0, 0.445);background-color:#26A69A;">
+        <a href="{% url 'index' %}" class="brand-logo" style="margin: 0;"> <img style="width: 80px; height: 80px; vertical-align: middle;" src="{% static 'img/rt.png' %}" alt="logo Recomienda">ReComienda</a>
+        <ul class="right hide-on-med-and-down">
+          {% if request.user.is_authenticated %}
+          {% if request.user.foto %}
+          <a href="{% url 'ver_perfil' request.user.id %}" class="brand-logo right"><img class="circle foto-perfil-esquina" src="{{ request.user.foto.url }}" style=" height: 40px; width: 40px"></a>
+          {% else %}
+          <a href="{% url 'ver_perfil' request.user.id %}" class="brand-logo right"><img class="circle foto-perfil-esquina" src="{% static 'img/pordefecto.jpg' %}" style=" height: 40px; width: 40px"></a>
+          {% endif%}
+          <li><a href="{% url 'ver_anuncios' %}"> <i class="material-icons left">remove_red_eye</i>Ver Anuncios</a></li>
+          <li><a href="{% url 'cerrar_sesion' %}"><i class="material-icons left">exit_to_app</i>Cerrar sesión</a></li>
+          <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Crear Anuncio<i class="material-icons right">arrow_drop_down</i></a></li>
+          
+          {% else %}
+          <li><a href="{% url 'iniciar_sesion' %}">Iniciar Sesion</a></li>
+          <li><a href="{% url 'nuevo_usuario' %}">Registrarse</a></li>        
+          
+          {% endif %}      
+        </ul>
+      </div>
+    </nav>
+      </header>
+>>>>>>> master
 
   
 {% include 'slide.html' %}

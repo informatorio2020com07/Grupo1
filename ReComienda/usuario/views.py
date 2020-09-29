@@ -35,6 +35,7 @@ def iniciar_sesion(request):
 	return render(request, "usuario/iniciar_sesion.html", {"form":form})
 
 
+
 @login_required
 def editar_perfil(request):
     perfil = request.user
@@ -44,7 +45,8 @@ def editar_perfil(request):
         if form.is_valid():
             perfil = form.save()
             return redirect("ver_perfil", perfil.id)
-    return render(request, "usuario/editar_usuario.html",{"form":form, "perfil":perfil})
+            
+    return render(request, "usuario/editar_perfil.html",{"form":form, "perfil":perfil})
 
 
 

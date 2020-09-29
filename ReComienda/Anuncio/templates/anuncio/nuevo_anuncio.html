@@ -51,7 +51,7 @@
     </div>
 
     RECORRIDO
-    {{ form.recorrido }}
+    {{ form.recorrido }}<br><br>
     TITULO
     {{ form.titulo }}
 
@@ -69,18 +69,18 @@
     <div class="col s6" style="color: #26A69A">
       <label for="fecha_cad">Fecha de Caducidad: </label>
       <input type="date" id="fecha_cad" value="{{ form.fecha_caducidad }}">
+    </div>
 
-    
+    <div class="input-field col s12" style="color: #26A69A">
+    {{ form.fecha_caducidad }}
     </div>
 
      <div class="telephone" style="color: #26A69A">
 
         TELEFONO
       {{form.telefono}}
-
-      
-  
     </div>
+    
 <div>
     <label>
       {{ form.permitir_comentarios }}

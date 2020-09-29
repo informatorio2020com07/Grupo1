@@ -1,5 +1,5 @@
 html { 
-  background: url(../img/carretera.jpg) no-repeat center center fixed; 
+  background: url(../img/chaco.jpeg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -52,8 +52,11 @@ img{
   cursor: pointer;
   font-family: 'Open Sans Condensed', sans-serif;
   line-height: 18px;
+<<<<<<< HEAD
   top: 3px;
   right: 20px;
+=======
+>>>>>>> master
   top: 6px;
   right: 25px;
   width: 10px;
@@ -61,7 +64,10 @@ img{
   text-align: center;
   border-radius: 15px;
   opacity: .6;
+<<<<<<< HEAD
   background: #009688;
+=======
+>>>>>>> master
   background: rgba(0,150,136,1);
   -webkit-transition: all 2s ease-in-out;
   -moz-transition: all 2s ease-in-out;
@@ -153,22 +159,26 @@ a:hover{
 }
 
 .checkbox:checked:active {
+<<<<<<< HEAD
 	box-shadow: 0 1px 2px rgba(0,0,0,0.5), inset 0px 1px 3px rgba(0,0,0,0.1);
+=======
+  box-shadow: 0 1px 2px rgba(0,0,0,0.5), inset 0px 1px 3px rgba(0,0,0,0.1);
+>>>>>>> master
 }
 
 .checkbox:checked {
   background: rgba(3,3,3,.4);
-	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.5);
-	color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.5);
+  color: #fff;
 }
 
 .checkbox:checked:after {
-	content: '\2714';
-	font-size: 10px;
-	position: absolute;
-	top: 0px;
-	left: 4px;
-	color: #fff;
+  content: '\2714';
+  font-size: 10px;
+  position: absolute;
+  top: 0px;
+  left: 4px;
+  color: #fff;
 }
 
 /*Recuérdame*/
@@ -219,5 +229,9 @@ a:hover{
 
 .orange-btn{
   background: rgba(0,150,136,1);
+<<<<<<< HEAD
 }
 	
+=======
+}
+>>>>>>> master

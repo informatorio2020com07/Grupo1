@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Iniciar Sesion</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesion</title>
   <link href="{% static 'css/inicio_sesion.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-	
+  
 <div id="login-button">
   <img src="https://dqcgrsy5v35b9.cloudfront.net/cruiseplanner/assets/img/icons/login-w-icon.png"></a>
   </img>
@@ -21,7 +21,8 @@
 
   </span>
 
-  	 <form method="POST">
+
+  	<form method="POST">
     {% csrf_token %}
     <div class="row">
 
@@ -69,7 +70,7 @@
 </body>
 <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
 <script>
-	$('#login-button').click(function(){
+  $('#login-button').click(function(){
   $('#login-button').fadeOut("slow",function(){
     $("#container").fadeIn();
     TweenMax.from("#container", .4, { scale: 0, ease:Sine.easeInOut});

@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block titlehead %}
     Perfil: {{ perfil.username }}
 {% endblock %}
@@ -104,22 +103,15 @@
 <tr> <th> Telefono: </th><td></td><td></td><td>{{ perfil.telefono }}</td> </tr>
 </table>        
 </strong>
+=======
+    <a href="{% url 'ver_anuncios' %}" class="waves-effect waves-light btn-small center"><i class="material-icons left">art_track</i>Ver anuncios</a>
+    <a href="#" class="waves-effect waves-light red btn center"><i class="material-icons">delete_forever</i></a>
+
+>>>>>>> master
 </div>
-    {% else %}
-<div class="row">    
-<h1>  Perfil: {{ perfil.username }}</h1>
-<p> <img src="{% static 'img/pordefecto.jpg' %}" alt="archivo por defecto" style="width: 400px; height: 400px; vertical-align: middle;"></p></div>
-    <hr>
-<strong>
-<table style="width: 40px; text-align: center; font-size: 20px;background-color: rgb(0,0,255); opacity: 0.5;">
-<tr> <th colspan="4"> datos del perfil </th> </tr>
-<tr> <th> Nombre: </th> <td></td><td></td><td>{{ perfil.first_name }} </td> </tr>
-<tr> <th> Apellido: </th><td></td><td></td><td> {{ perfil.last_name }}</td> </tr>
-<tr> <th> Email: </th><td></td><td></td><td>{{ perfil.email }}</td> </tr>
-<tr> <th> Telefono: </th><td></td><td></td><td>{{ perfil.telefono }}</td> </tr>
-</table>        
-</strong>
+
 </div>
+<<<<<<< HEAD
            
     {% endif %}  
 
@@ -129,4 +121,10 @@
     <a href="{% url 'ver_anuncios' %}" class="waves-effect waves-light btn"><i class="material-icons left">directions</i>VER ANUNCIOS</a>
     {% endif %}
         -->
+=======
+
+</div>
+
+        {% endif %}
+>>>>>>> master
 {% endblock %}

@@ -23,4 +23,6 @@ class EditarPerfilForm(UserChangeForm):
     class Meta:
         model = Perfil
         fields = ["username","first_name","last_name", "telefono", "email", "foto"]
+
         widget = {"username":forms.TextInput(attrs={"readonly":"readonly"})}
+
