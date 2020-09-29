@@ -13,5 +13,7 @@ urlpatterns = [
 	path("anuncio/search", views.search, name="search"),
 	path("anuncio/<int:id>/calificar/<int:calificacion>/", views.calificar_anuncio, name="calificar_anuncio"),
 	path("anuncio/ver_anuncios", views.ver_anuncios, name="ver_anuncios"),
+	path("anuncio/<int:id>/editar", views.editar_anuncio, name = "editar_anuncio"),
+	path("contratista/<int:id>/editar", views.editar_anuncioC, name = "editar_anuncioC"),
 ] 
 

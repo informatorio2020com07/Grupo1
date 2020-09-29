@@ -40,11 +40,11 @@
           <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Crear Anuncio<i class="material-icons right">arrow_drop_down</i></a></li>
           
           {% else %}
-          <li><a href="{% url 'iniciar_sesion' %}">Iniciar Sesion</a></li>
+          <li><a href="{% url 'iniciar_sesion' %}"><i class="material-icons left">account_box</i>Iniciar Sesion</a></li>
           <li><a href="{% url 'nuevo_usuario' %}">Registrarse</a></li>        
-          
+           </ul>
           {% endif %}      
-        </ul>
+       
       </div>
     </nav>
       </header>

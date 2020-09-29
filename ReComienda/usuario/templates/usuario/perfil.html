@@ -79,7 +79,7 @@
     <div class="row">
     <a href="{% url 'editar_perfil' %}" class="waves-effect waves-light btn-small center"><i class="material-icons left">edit</i>EDITAR</a>
     <a href="{% url 'ver_anuncios' %}" class="waves-effect waves-light btn-small center"><i class="material-icons left">art_track</i>Ver anuncios</a>
-    <a href="#" class="waves-effect waves-light red btn center"><i class="material-icons">delete_forever</i></a>
+    <a href="{% url 'borrar_perfil' perfil.id %}" class="waves-effect waves-light red btn center"><i class="material-icons">delete_forever</i></a>
 
 </div>
 

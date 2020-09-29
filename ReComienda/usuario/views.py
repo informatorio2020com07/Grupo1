@@ -61,3 +61,18 @@ def ver_perfil(request,id):
         }
     template = "usuario/perfil.html"
     return render(request, template, contexto)
+
+@login_required
+def borrar_perfil(request, id):
+
+        u = Perfil.objects.get(pk = id)
+
+        if request.method == "POST":
+        	try:
+        		
+        		u.delete()       		
+        		return redirect('index')               
+        	except ex:
+        		return redirect('ver_perfil')
+        		
+        return render(request, 'usuario/borrar_perfil.html')

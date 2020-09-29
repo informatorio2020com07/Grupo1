@@ -15,7 +15,7 @@ Anuncio : {{anuncio.titulo}}
             </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{ anuncio.titulo}}<i class="material-icons right">more_vert</i></span>
-                <p><a title="Enviar mensaje" href="https://web.whatsapp.com/send?phone=54{{anuncio.telefono}}&text=Hola%2C+%C2%BFC%C3%B3mo+est%C3%A1s%3F" target="nombre_marco"><img src="{% static 'img/whatsapp-logo.png' %}" img style="width: 40px; height: 40px; vertical-align: middle;" alt="WhatsApp" /></a></p>s                
+                <p><a title="Enviar mensaje" href="https://web.whatsapp.com/send?phone=54{{anuncio.telefono}}&text=Hola%2C+%C2%BFC%C3%B3mo+est%C3%A1s%3F" target="nombre_marco"><img src="{% static 'img/whatsapp-logo.png' %}" img style="width: 40px; height: 40px; vertical-align: middle;" alt="WhatsApp" /></a></p>              
                 {{ anuncio.usuario.username}}
                  <p><a href="mailto:ReComienda@Recomienda.com,rrhh@Gmail.com? subject=ReComienda"title="Vinculo de correo electronico">{{anuncio.E_mail}}</a></p>
               </div>
@@ -32,14 +32,19 @@ Anuncio : {{anuncio.titulo}}
           </div>
         </div>    
   </div></div>
-  <div class="row opciones-box">
-            {% if request.user == anuncio.usuario%}
+  
+            {% if request.user == anuncio.usuario%}<div class="row opciones-box">
                 <form method="POST" action="{%url 'borrar_anuncioT' anuncio.id%}">
                     {% csrf_token %}
                     <button type="submit" onclick="return confirm('Seguro?')" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
-                </form>
+                </form> </div>
+                 <div class="col s2">
+                
+                <a href="{%url 'editar_anuncioC' anuncio.id %}" class="btn-floating btn-large waves-effect waves-light "><i class="material-icons">edit</i></a>
+                  
+            </div>
             {% endif %}
-          </div>
+         
 <hr>                   
 <hr>
   <h5>OTROS ANUNCIOS</h5>

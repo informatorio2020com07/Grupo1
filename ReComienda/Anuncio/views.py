@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Anuncio_Trans, Contratista,Localidad,Transporte, Comentario , CalificacionPost
-from .forms import AnuncioForm, ContratistaForm, ComentarioForm, LocalidadForm, TransporteForm,SearchForm
+from .forms import AnuncioForm, ContratistaForm, ComentarioForm, LocalidadForm, TransporteForm,SearchForm, EditarAnuncioTForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
@@ -214,3 +214,37 @@ def ver_anuncios(request):
 
     }
     return render(request,"anuncio/ver_anuncios.html", contexto)
+
+@login_required
+def editar_anuncio(request,id):
+    anuncio = Anuncio_Trans.objects.get(pk=id)
+    print(anuncio)    
+    if request.method == "GET":
+        form = EditarAnuncioTForm(instance=anuncio)
+        print(form)
+        
+    elif request.method == "POST":
+        form = EditarAnuncioTForm(data=request.POST, instance=anuncio)
+        if form.is_valid():
+            anuncio = form.save()
+            return redirect("ver_anuncio", anuncio.id)
+    
+
+    return render(request, "anuncio/editar_anuncio.html",{"form":form})
+
+
+def editar_anuncioC(request,id):
+    anuncio = Contratista.objects.get(pk=id)
+    print(anuncio)    
+    if request.method == "GET":
+        form = EditarAnuncioTForm(instance=anuncio)
+        print(form)
+        
+    elif request.method == "POST":
+        form = EditarAnuncioTForm(data=request.POST, instance=anuncio)
+        if form.is_valid():
+            anuncio = form.save()
+            return redirect("ver_anuncio", anuncio.id)
+    
+
+    return render(request, "anuncio/editar_anuncio.html",{"form":form})
