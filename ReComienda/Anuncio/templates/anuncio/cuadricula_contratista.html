@@ -1,7 +1,7 @@
 {% load static %}
 {% for anuncio in lista_contrato %}
       <div class="row">
-        <div class="col s12 m6 l4">
+        <div class="col s12 m6 l3">
          <div class="card">
           <div class="col s12">
            <div class="card">
@@ -19,15 +19,15 @@
               
               </div>
            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">{{ anuncio.titulo}}<i class="material-icons right">more_vert</i></span>
+                <span class="card-title activator grey-text text-darken-2">{{ anuncio.titulo}}<i class="material-icons right">more_vert</i></span>
                 <p>{{anuncio.telefono}}</p>
                 <span class="new badge" data-badge-caption="Calificacion">{{anuncio.puntaje}}</span>
                 <p><a href="#"><p>{{anuncio.Email}}</p></a></p>
             </div>
             <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">{{anuncio.titulo}}<i class="material-icons right">close</i>
+          <span class="card-title grey-text text-darken-2">{{anuncio.titulo}}<i class="material-icons right">close</i>
           <p>{{anuncio.descripcion}}</p><br>
-          <p>Tel: {{anuncio.telefono}}</p><br>
+          <p>Tel: {{anuncio.telefono}}</p>
           <hr>
           <p>Tipo de Servicio: {{anuncio.tipo_servicio}}</p>
           <p>Fecha de Viaje: {{anuncio.fecha_viaje}}</p>

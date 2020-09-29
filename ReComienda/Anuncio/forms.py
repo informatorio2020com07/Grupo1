@@ -72,6 +72,13 @@ class SearchForm(forms.Form):
         self.fields["titulo"].widget.attrs["placeholder"] = "Ingrese filtros titulo"
         self.fields["localidad_destino"].widget.attrs["placeholder"] = "Ingrese filtros localidad"
 
-class EditarAnuncioTForm(forms.Form):
-    model = Anuncio_Trans
-    fields = "__all__"
+class EditarAnuncioTForm(forms.ModelForm):
+    class Meta:
+        model = Anuncio_Trans
+        fields = ('nombre', 'E_mail', 'telefono', 'titulo', 'recorrido', 'descripcion', 'localidad_origen', 'localidad_destino','fecha_caducidad','permitir_comentarios',)
+
+    def __init__(self, *args, **kwargs):
+        super(EditarAnuncioTForm, self).__init__(*args, **kwargs)
+        self.fields["permitir_comentarios"].widget.attrs.update({"type":"checkbox", "checked":"checked"})
+
+        

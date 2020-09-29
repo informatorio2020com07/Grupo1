@@ -2,7 +2,7 @@
 {% for anuncio in lista_anuncio %} 
 
       <div class="row">
-        <div class="col s12 m4 l4">
+        <div class= "col s12 m6 l3"     <!-- "col s12 m4 l4" -->
          <div class="card"><div class="col s12">
           <div class="col s12">
            <div class="card">
@@ -17,19 +17,19 @@
 
               </div>
                 <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">{{anuncio.titulo}}<i class="material-icons right">close</i>
-          <p>{{anuncio.descripcion}}</p><br>          
-          <p>Tel: {{anuncio.telefono}} 
-            <a title="Enviar mensaje" href="https://web.whatsapp.com/send?phone=54{{anuncio.telefono}}&text=Hola%2C+%C2%BFC%C3%B3mo+est%C3%A1s%3F" target="nombre_marco">
-            <img src="{% static 'img/whatsapp-logo.png' %}" img style="width: 40px; height: 40 px; vertical-align: middle;" alt="WhatsApp" /></a>
-          </p>
+                  <span class="card-title grey-text text-darken-4">{{anuncio.titulo}}<i class="material-icons right">close</i>
+          
+                  <p>{{anuncio.descripcion}}</p>          
+                  <h6> Tel: {{anuncio.telefono}}  
+                  <a title="Enviar mensaje" href="https://web.whatsapp.com/send?phone=54{{anuncio.telefono}}&text=Hola%2C+%C2%BFC%C3%B3mo+est%C3%A1s%3F" target="nombre_marco"><img src="{% static 'img/whatsapp-logo.png' %}" img style="width: 20px; height:20 px; vertical-align: middle;" alt="WhatsApp"/></a>
+          </h6>
 
 
           <hr>
-          <p>Localidad Origen: {{anuncio.localidad_origen}}</p>
-          <p>Localidad Destino: {{anuncio.localidad_destino}}</p>
-          <p>Recorrido: {{anuncio.recorrido}}</p>
-          <p>Fecha de Caducidad: {{anuncio.fecha_caducidad}}</p>
+          <h6>Localidad Origen: {{anuncio.localidad_origen}}</h6>
+          <h6>Localidad Destino: {{anuncio.localidad_destino}}</h6>
+          <h6>Recorrido: {{anuncio.recorrido}}</h6>
+          <h6>Fecha de Caducidad: {{anuncio.fecha_caducidad}}</h6>
           <p style="text-align: right">{{anuncio.fecha_publicacion}}</p>
           <a href="{% url 'ver_anuncio' anuncio.id %}" title="vinculo a contacto" style="text-align: right"><p style="text-align: right">VER ANUNCIO</p></a>
           </div>

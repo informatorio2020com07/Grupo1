@@ -5,6 +5,8 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from .forms import NuevoUsuarioForm, EditarPerfilForm
 from django.contrib.auth.decorators import login_required
 from .models import Perfil
+from django.contrib import messages
+
 # Create your views here.
 def bienvenido(request):
 	return render(request, "usuario/bienvenido.html",{})
@@ -48,11 +50,28 @@ def editar_perfil(request):
 
 
 
+@login_required
+def borrar_perfil(request, id):
+
+        u = Perfil.objects.get(pk = id)
+
+        if request.method == "POST":
+        	try:
+        		
+        		u.delete()       		
+        		return redirect('index')               
+        	except ex:
+        		return redirect('ver_perfil')
+        		
+        return render(request, 'usuario/borrar_perfil.html')
+
+
 
 @login_required
 def cerrar_sesion(request):
 	logout(request)
 	return redirect("index")
+
 @login_required
 def ver_perfil(request,id):
     perfil = Perfil.objects.get(pk=id)

@@ -18,8 +18,8 @@ class Transporte(models.Model):
 		return self.transporte
 
 class Anuncio_Trans(models.Model):
-	nombre = models.CharField(max_length=30)
-	E_mail = models.EmailField(null=True)
+	nombre = models.CharField(max_length=30, verbose_name="Nombre")
+	E_mail = models.EmailField(null=True, verbose_name="Correo Electronico")
 	localidad_origen = models.ForeignKey(Localidad, on_delete = models.CASCADE, related_name = 'localidad_origen_trans')
 	localidad_destino = models.ForeignKey(Localidad, on_delete = models.CASCADE, related_name = 'localidad_destino_trans')
 	recorrido = models.TextField()	

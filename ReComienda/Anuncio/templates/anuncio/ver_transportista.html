@@ -35,16 +35,20 @@
           </div>
         </div>  
         <div class="row">
+          
+          <div class="col s2">
             {% if request.user == anuncio.usuario%}
                 <form method="POST" action="{%url 'borrar_anuncioT' anuncio.id%}">
                     {% csrf_token %}
                     <button type="submit" onclick="return confirm('Seguro?')" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
                 </form>
+          </div>
 
-                <form method="POST" action="{%url 'editar_anuncio' anuncio.id%}">
-                    {% csrf_token %}
-                    <button type="submit" class="btn-floating btn-large waves-effect waves-light "><i class="material-icons">edit</i></button>
-                </form>
+            <div class="col s2">
+                
+                <a href="{%url 'editar_anuncio' anuncio.id %}" class="btn-floating btn-large waves-effect waves-light "><i class="material-icons">edit</i></a>
+                  
+            </div>
 
             {% endif %}
           </div>                      

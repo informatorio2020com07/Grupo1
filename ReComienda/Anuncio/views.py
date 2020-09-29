@@ -3,6 +3,8 @@ from .models import Anuncio_Trans, Contratista,Localidad,Transporte, Comentario 
 from .forms import AnuncioForm, ContratistaForm, ComentarioForm, LocalidadForm, TransporteForm,SearchForm, EditarAnuncioTForm
 from django.contrib.auth.decorators import login_required
 import datetime
+from django.contrib import messages
+
 # Create your views here.
 def index(request):
     if request.GET:
@@ -121,23 +123,36 @@ def comentar(request,id):
 def borrar_anuncioT(request,id):
     anuncio = Anuncio_Trans.objects.get(pk=id)
     if request.method == "POST":
+  
+
         if anuncio.usuario == request.user:
             anuncio.delete()
-            return redirect("ver_perfil", request.user.id)
+            
+    return redirect("ver_perfil", request.user.id)
+    
+
+            
 
 
 
 @login_required
 def editar_anuncio(request,id):
     anuncio = Anuncio_Trans.objects.get(pk=id)
-    request_anuncio = request.Anuncio_Trans
+
+    print(anuncio)
     
-    form = EditarAnuncioTForm(instance=request_anuncio)
-    if request.method == "POST":
-        form = EditarAnuncioTForm(request.POST, request.FILES, instance=request_anuncio)
+    if request.method == "GET":
+
+        form = EditarAnuncioTForm(instance=anuncio)
+        print(form)
+        
+    elif request.method == "POST":
+        form = EditarAnuncioTForm(data=request.POST, instance=anuncio)
         if form.is_valid():
             anuncio = form.save()
             return redirect("ver_anuncio", anuncio.id)
+    
+
     return render(request, "anuncio/editar_anuncio.html",{"form":form})
 
 
