@@ -79,3 +79,10 @@ class EditarAnuncioTForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(EditarAnuncioTForm, self).__init__(*args, **kwargs)
         self.fields["permitir_comentarios"].widget.attrs.update({"type":"checkbox", "checked":"checked"})
+
+class EditarAnuncioCForm(forms.ModelForm):
+    class Meta:
+        model = Contratista
+        fields = "__all__"
+        exclude = ('usuario',"permitir_comentarios")
+    

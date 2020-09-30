@@ -10,10 +10,11 @@ urlpatterns = [
 	path("contratista/<int:id>", views.ver_contratista, name="ver_contratista"),
 	path("anuncio/<int:id>/comentar", views.comentar, name="comentar"),
 	path("anuncio/<int:id>/borrar", views.borrar_anuncioT, name="borrar_anuncioT"),
+	path("contratista/<int:id>/borrar", views.borrar_anuncioC, name="borrar_anuncioC"),
 	path("anuncio/search", views.search, name="search"),
 	path("anuncio/<int:id>/calificar/<int:calificacion>/", views.calificar_anuncio, name="calificar_anuncio"),
 	path("anuncio/ver_anuncios", views.ver_anuncios, name="ver_anuncios"),
-	path("anuncio/<int:id>/editar", views.editar_anuncio, name = "editar_anuncio"),
+	path("anuncio/<int:id>/editar", views.editar_anuncioT, name = "editar_anuncio"),
 	path("contratista/<int:id>/editar", views.editar_anuncioC, name = "editar_anuncioC"),
 ] 
 

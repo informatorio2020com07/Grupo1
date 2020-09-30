@@ -4,7 +4,8 @@ from usuario.models import Perfil
 # Create your models here.
 from .validators import validate_valor_calificacion
 from django.core.validators import MaxValueValidator, MinValueValidator
-
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 class Localidad(models.Model):
 	localidad = models.CharField(max_length= 60)
 
@@ -72,7 +73,15 @@ class Contratista(models.Model):
 	E_mail = models.EmailField(null=True)
 	telefono = models.CharField(max_length=20, null=True, verbose_name="Nro Telefono")
 	"""tipo_servicio = models.ForeignKey(Servicios, on_delete = models.CASCADE, null=True)"""
+	def clean(self):
+		start_date = self.fecha_viaje
+		end_date = self.fecha_lapso
+		print(start_date)
 
+		if end_date <= start_date:
+			raise ValidationError("la fecha hasta debe ser mayor a la del viaje")
+		elif start_date <= timezone.now():
+			raise ValidationError("la fecha no puede ser anterior a la fecha actual")
 """class Servicios(models.Model):
 	nombre = models.CharField(max_length= 40)
 	def __str__(self):

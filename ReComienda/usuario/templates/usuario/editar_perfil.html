@@ -26,7 +26,7 @@
        
         <div class="col s6">
        
-        {% csrf_token %}
+      <b>  {% csrf_token %}
         {% if form.non_field_errors %}
         {% for error in form.non_field_errors %}
             <p>{{error}}</p>
@@ -37,7 +37,7 @@
             {{ f.label_tag }} 
             {{f}} 
             {{f.errors |striptags }}
-            {% endfor %}
+            {% endfor %}</b>
         <div class="row center">
             <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
                 <i class="material-icons right">save</i>
