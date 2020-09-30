@@ -54,7 +54,8 @@ class ComentarioForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     titulo = forms.CharField(max_length=30, required = False)
-    localidad_destino = forms.CharField(max_length=50, required = False)
+    #localidad_destino = forms.CharField(max_length=50, required = False)
+    localidad_destino = forms.ModelChoiceField(queryset=Localidad.objects.all(), required = False)
     ORDER_OPCIONES = (
         ("titulo", "Titulo"),
         ("localidad", "localidad"),

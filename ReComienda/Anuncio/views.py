@@ -125,7 +125,7 @@ def borrar_anuncioT(request,id):
 
 @login_required
 def borrar_anuncioC(request,id):
-    anuncio = Contratista.get(pk=id)
+    anuncio = Contratista.objects.get(pk=id)
     if request.method == "POST":
         if anuncio.usuario == request.user:
             anuncio.delete()
@@ -139,10 +139,13 @@ def search(request):
         search_form = SearchForm()
 
     filtro_titulo = request.GET.get("titulo", "")
-    filtro_localidad = request.GET.get("localidad", "")
+    filtro_localidad = request.GET.get("localidad_destino", None)
     orden_anuncio = request.GET.get("orden", None)
-    lista_anuncio = Anuncio_Trans.objects.filter(titulo__icontains = filtro_titulo).filter(localidad_destino__localidad__icontains=filtro_localidad)
-    lista_contrato = Contratista.objects.filter(titulo__icontains = filtro_titulo).filter(localidad_destino__localidad__icontains=filtro_localidad)
+    lista_anuncio = Anuncio_Trans.objects.filter(titulo__icontains = filtro_titulo)
+    lista_contrato = Contratista.objects.filter(titulo__icontains = filtro_titulo)
+    if filtro_localidad:
+        lista_anuncio = lista_anuncio.filter(localidad_destino__id=filtro_localidad)
+        lista_contrato = lista_contrato.filter(localidad_destino__id=filtro_localidad)
     #localidades = Localidad.objects.filter(localidad__icontains = filtro_localidad)
     
     if orden_anuncio == "titulo":
