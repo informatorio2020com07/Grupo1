@@ -34,7 +34,7 @@ Anuncio : {{anuncio.titulo}}
   </div></div>
   
             {% if request.user == anuncio.usuario%}<div class="row opciones-box">
-                <form method="POST" action="{%url 'borrar_anuncioT' anuncio.id%}">
+                <form method="POST" action="{%url 'borrar_anuncioC' anuncio.id%}">
                    <a href="{%url 'editar_anuncioC' anuncio.id %}" class="btn-floating btn-large waves-effect waves-light "><i class="material-icons">edit</i></a> {% csrf_token %}
                     <button type="submit" onclick="return confirm('Seguro?')" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">delete</i></button>
                 </form> </div>
