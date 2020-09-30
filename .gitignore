@@ -130,3 +130,6 @@ dmypy.json
 
 #base datos sqlite
 *.sqlite3
+
+#carpetas que no hacen falta
+media/
