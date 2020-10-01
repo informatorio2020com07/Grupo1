@@ -53,22 +53,22 @@ Anuncio : {{anuncio.titulo}}
                     <div class="row calificacion-box">
               <div class="row center-align calificacion-botonera">                
                 <div class="col s2">
-                  <a class="waves-effect waves-light btn pulse light-green accent-3" href="{% url 'calificar_anuncio' anuncio.id 0 %}">0</a>
+                  <a class="waves-effect waves-light btn pulse light-green accent-3" href="{% url 'calificar_anuncio' anuncio.id 0 %}">0<i class="material-icons">star</i></a>
                 </div>
                 <div class="col s2">
-                  <a class="waves-effect waves-light btn {% if calificacion >= 1 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 1 %}">1</a>
+                  <a class="waves-effect waves-light btn {% if anuncio.puntaje >= 1 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 1 %}">1<i class="material-icons">star</i></a>
                 </div>
                 <div class="col s2">
-                  <a class="waves-effect waves-light btn {% if calificacion >= 2 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 2 %}">2</a>
+                  <a class="waves-effect waves-light btn {% if anuncio.puntaje >= 2 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 2 %}">2<i class="material-icons">star</i></a>
                 </div>
                 <div class="col s2">
-                  <a class="waves-effect waves-light btn {% if calificacion >= 3 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 3 %}">3</a>
+                  <a class="waves-effect waves-light btn {% if anuncio.puntaje >= 3 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 3 %}">3<i class="material-icons">star</i></a>
                 </div>
                 <div class="col s2">
-                  <a class="waves-effect waves-light btn {% if calificacion >= 4 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 4 %}">4</a>
+                  <a class="waves-effect waves-light btn {% if anuncio.puntaje >= 4 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 4 %}">4<i class="material-icons">star</i></a>
                 </div>
                 <div class="col s2">
-                  <a class="waves-effect waves-light btn {% if calificacion >= 5 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 5 %}">5</a>
+                  <a class="waves-effect waves-light btn {% if anuncio.puntaje >= 5 %}pulse light-green accent-3{%endif%}" href="{% url 'calificar_anuncio' anuncio.id 5 %}">5<i class="material-icons">star</i></a>
                 </div>
 
               </div>
