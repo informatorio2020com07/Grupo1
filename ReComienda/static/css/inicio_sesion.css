@@ -5,9 +5,11 @@ html {
   -o-background-size: cover;
   background-size: cover;
   overflow: hidden;
+
 }
 
 img{
+  opacity:0.5;
   display: block;
   margin: auto;
   width: 100%;

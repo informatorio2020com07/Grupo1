@@ -1,6 +1,5 @@
-
-    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+img{opacity:0.5;}
 html {
   font-family: 'Montserrat', Arial, sans-serif;
   -ms-text-size-adjust: 100%;

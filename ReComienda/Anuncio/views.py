@@ -259,3 +259,6 @@ def editar_anuncioC(request,id):
     
 
     return render(request, "anuncio/editar_anuncioC.html",{"form":form})
+
+def acercade(request):
+    return render(request, 'anuncio/acercade.html', {})
