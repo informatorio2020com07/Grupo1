@@ -16,6 +16,11 @@ matracas44
 Roberto90
 saraza90
 
+superuser: "superwoman"
+password: "12345"
+
+
+
 mysql> select aes_encrypt("manzana","clave");
 select aes_descrypt(@palabra, "clave");
 fields = ("first_name","last_name","username", "email", "password", "nacimiento", "foto")
